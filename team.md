@@ -62,9 +62,9 @@ By Email: Within 3 hours (on average); 1 day (maximum)
 - If a teammate drops the course, have an emergency group meeting to redivide their work
 - If a teammate misses meetings, contact them online to understand why:
   - If they cannot make the meetings for a valid reason, reschedule meetings or hold online meetings
-  - If they do not have a valid reason, for example, if they do not come because they do not want to, discuss the matter with the team member. Then, if they do not attend the next meeting, hold an emergency team meeting to discuss the matter. 
+  - If they do not have a valid reason, for example, if they do not come because they do not want to, discuss the matter with the team member by email to maintain a record of the conversation. Then, if they do not attend the next meeting, hold an emergency team meeting to discuss the matter and notify the professor and TA
 - If a teammate is not meeting deadlines, investigation is necessary:
-  - Nothing was done: discuss the issue with the team member. If they do not meet deadlines after that, hold an emergency team meeting to consider dropping the member
+  - Nothing was done: discuss the issue with the team member through email to maintain a record of the conversation. If they do not meet deadlines after that, hold an emergency team meeting to consider dropping the member
   - They need help: help them if you are done with your tasks
   - Task is harder than originally discussed, we can:
     - Assign the teammate another task instead
