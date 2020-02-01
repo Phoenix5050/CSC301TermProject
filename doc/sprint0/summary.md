@@ -1,5 +1,6 @@
 # Summary - Course Planner
 **Executive Summary**
+
 Team FULL THROTTLE AXOLOTL is creating a no-nonsense Course Planner. The Course Planner is a web-based application that tracks and arranges a user’s proposed academic career for personal and professional use. It provides its users with a streamlined, easy-to-understand scheduling system that keeps all their prospective education organized and ready to be adjusted if needed.
 
 The Course Planner’s key users are students looking for a universal guidance tool to help them plan out their academic career. It aims to help students and student-associated people of all descriptions; like new students looking to organize their existing courses; student TAs needing to see courses they will teach on the same timetable as their own courses; and students who want to view their path to graduation and ensure they have met the necessary requirements.
