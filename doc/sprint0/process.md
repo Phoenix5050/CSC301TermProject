@@ -1,5 +1,12 @@
 # **Process**
-* The team was organized using messaging apps like Messenger, WhatsApp and Outlook email. Each member of the team was then assigned certain parts of sprint 0 deliverables to do depending on the team’s voting system.
+* The team was organized using messaging apps like Messenger, WhatsApp and Outlook email. Each member of the team was then assigned certain parts of sprint 0 deliverables to do depending on the team’s voting system. The sprint 0 deliverable roles were decided as the following:
+   * summary.md: Gordon
+   * competition.md: Aaron
+   * Personas.pdf: Anusha, Nabeel
+   * Product Backlog: Everyone --(converting to markdown)--> PB.md: Gordon
+   * User Interface: Venura
+   * done.md: Azan
+   * process.md: Rohan
 * The team met in person every Monday of the week in a room at MN from 3pm to 4pm where we planned and decided on our project topic.
 * The decision making for the team was based on a voting system: 
     * First, each of us presented our ideas/suggestions to the team at the group meeting.
