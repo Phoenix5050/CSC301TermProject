@@ -29,32 +29,33 @@
   - &quot;As a student, I want to be able to see all the prerequisites I would need to take a specific course.&quot;
   - A way to plan for courses by checking prerequisites and making academic plan
   - Depends on course directory
-  - Applies Tasha
+  - Applies to Tasha Green persona
 6. Calendar/Timetable Planner:
   - &quot;As a student, I want to be able to have a visual calendar representation of my semester schedule according to a saved list of courses in my account.&quot;
   - A way to add events related to courses and to plan out the user&#39;s academic career
   - Depends on users
   - Could include midterm times, assignment dates, course office hours, etc.
-  - Applies to Jimmy
+  - Applies to Jimmy Smith persona
 7. Graduation Planner:
   - &quot;As a student, I want to know if I meet the course credit requirements to graduate and what courses I could take to meet them.&quot;
   - Depends on prerequisites and calendar
   - Checks for ssc/hum/sci credits
   - Keeps track of credits
-  - Applies to Tasha and Ferdz
+  - Applies to all personas
 8. Alternative Timetable Planner:
   - &quot;As a student, I would like to create alternative academic career paths to graduate with in case I am unable to pursue one path, or find a more appropriate one to pursue.&quot;
   - Depends on graduation planner timetable planner
   - Alternative plans for if you make it into post or if you have courses you&#39;d like to take
+  - Applies to Ferdz Hernandez persona
 9. Opt-in Course Compare:
   - &quot;As a student, I want to be able to examine the courses taken by my peers and classmates.&quot;
   - If students choose to opt list see list of other students with courses they share
   - Depends on time table planner
-  - Applies to Jimmy
+  - Applies to Jimmy Smith persona
 10. Export Planner:
-  - &quot;As a user, I want to be able to export my calendar info to other calendar options.&quot;
+  - &quot;As a user, I want to be able to export my calendar information to other calendar options.&quot;
   - Depends on timetable and website/platform
-  - Applies to no personas, but is intended as the final feature and may be dropped
+  - Applies to Ferdz Hernandez persona
 
 **Point System (Uses &quot;Planning Poker&quot;)**
 
