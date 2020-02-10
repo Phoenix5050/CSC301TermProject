@@ -11,7 +11,7 @@ summary.md (Max 8 marks)
   - Principles have been described clearly (max 2 marks) [0 marks: not at all, 1 mark = somewhat clearly, 2 marks = clearly]
     Your mark: 2
 	
-	summary.md mark: 6
+	summary.md mark: 8
 	
 competition.md (Max 2 marks)
   - Competition has been identified clearly (max 2 marks) [0 marks: not at all, 1 mark = somewhat clearly, 2 marks = clearly]
@@ -82,4 +82,4 @@ User experience: (max 4 marks)
    User experience mark: 4
    
    
-Total mark for phase 1 : 40/42 
+Total mark for phase 1 : 42/42 
