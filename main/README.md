@@ -23,7 +23,7 @@ Assuming the [Team FTA GitHub repo](https://github.com/UTMCSC301/project-full-th
     
     c. **[FUL-#]**: The Jira issue for which you are submitting changes
     
-    _(e.g. A branch from Gordon for Sprint 1 would look like_ **s1-gordon-FUL-1**_)_
+    _(e.g. A branch from Gordon for Sprint 1 would look like_ **s1-gordon-FUL-0**_)_
 
 3. Move your local changes over to the branch you just created
 4. Write a meaningful summary and description of what is accomplished in your changes
