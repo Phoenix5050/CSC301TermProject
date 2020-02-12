@@ -3,21 +3,21 @@
 ## Repo Descriptions
 *css*: .css files used to style .html files
 
-*html*: .html files for the main website used to house our webapp
+*html*: .html files for the website used to house the course planner application
 
-*img*: Any images we may use in the project
+*img*: Any images we used in the project
 
-*java*: Any and all java programs used for our webapp
+*java*: Any and all java files used for the application
 
 *misc*: Miscellaneous stuff
 
 ## GitHub Developer Submission Procedure
 Assuming the [Team FTA GitHub repo](https://github.com/UTMCSC301/project-full-throttle-axolotl.git) has been cloned to your machine:
 
-1. Move all new/updated deliverable files into your local repo clone
-2. Create a new GitHub branch named with this convention: s#-[name]-[FUL-#]
+1. Move all new/updated deliverable files into the appropriate folder in your local repo clone
+2. Create a new GitHub branch named with this convention: [s#]-[name]-[FUL-#]
 
-    a. **s#**: Current Sprint #
+    a. **[s#]**: Current Sprint #
 
     b. **[name]**: Your own name; lowercase
     
