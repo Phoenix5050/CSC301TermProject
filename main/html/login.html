@@ -2,15 +2,45 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<script src="../java/login.js"></script>
+		<script src="../js/login.js"></script>
 		<title>Course Planner Login</title>
 	</head>
 	<body>
 		<h1>Login to Course Planner</h1>
-			<table>
-				<tr><th><label for="user">Username:</label></th><td><input type="text" id="username" /></td></tr>
-				<tr><th><label for="password">Password:</label></th><td> <input type="password" id="password" /></td></tr>
-				<tr><th>&nbsp;</th><td><input type="button" id="login" value="Login" onclick="handleLogin()" /></td></tr>
-			</table>
+			<div id="Login">
+				<table>
+					<tr><th><label for="user">Username:</label></th><td><input type="text" id="username" /></td>
+					<th><label for="password">Password:</label></th><td> <input type="password" id="password" /></td>
+					<th>&nbsp;</th><td><input type="button" id="login" value="Login" onclick="handleLogin()" /></td></tr>
+				</table>
+			</div>
+		<hr/>
+		<h1>Register for Course Planner</h1>
+			<div id="Register">
+				<table>
+					<tr>
+						<td><input type="text" id="Firstname" value="First Name"/></td>
+						<td><input type="text" id="Lastname" value="Last Name"/></td>
+					</tr>
+					<tr><td><input type="text" id="email" value="Email"/></td></tr>
+					<tr><td><input type="text" id="age" value="Age"/></td></tr>
+					<tr><td><input type="text" id="user" value="Username"/></td></tr>
+					<tr><th><label for="password">Password:</label></th><td><input type="password" id="password" /></td></tr>
+					<tr><th><label for="password">Confirm Password:</label></th><td><input type="password" id="confirmPass" /></td></tr>
+					<tr>
+						<th style="text-align:right;">Gender:</th>
+						<td>
+							<div id="genderselect" onclick="customGender()">
+								<input type="radio" name="gender" value="male" id="male" /><label for="male">Male</label>
+								<input type="radio" name="gender" value="female" id="female" /><label for="female">Female</label>
+								<input type="radio" name="gender" value="other" id="other" /><label for="other">Other</label>
+								<br/>
+							</div>
+						</td>
+					</tr>
+					<tr id="customGender"><tr/>
+					<tr><th>&nbsp;</th><td><input type="button" id="register" value="Register" /></td></tr>
+				</table>
+			</div>
 	</body>
 </html>
