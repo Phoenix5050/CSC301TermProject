@@ -26,13 +26,14 @@ Assuming the [Team FTA GitHub repo](https://github.com/UTMCSC301/project-full-th
     _(e.g. A branch from Gordon for Sprint 1 would look like_ **s1-gordon-FUL-0**_)_
 
 3. Move your local changes over to the branch you just created
-4. Write your Jira ticket number in the summary with a meaningful title (e.g. "[FUL-XX] Updated ../main/README.md") and a description of what is accomplished in your changes
+4. Write your Jira ticket number in the summary with a basic description (e.g. "[FUL-XX] Updated ../main/README.md")
+5. Write a meaningful description of what is accomplished in your changes
     - Bullet point form is fine; use “~” to separate each main detail
-5. Fetch the latest origin and merge any conflicting files if necessary
-6. Commit your changes to your new branch
-7. Publish your branch to the [project-full-throttle-axolotl repo](https://github.com/UTMCSC301/project-full-throttle-axolotl.git)
-8. From there, create a pull request for your new branch
-9. Merge the pull request into the master branch, then safely delete your branch
+6. Fetch the latest origin and merge any conflicting files if necessary
+7. Commit your changes to your new branch
+8. Publish your branch to the [project-full-throttle-axolotl repo](https://github.com/UTMCSC301/project-full-throttle-axolotl.git)
+9. From there, create a pull request for your new branch
+10. Merge the pull request into the master branch, then safely delete your branch
 
 [Take a look at this example commit made for reference](https://github.com/UTMCSC301/project-full-throttle-axolotl/commit/f1440740c1be42800cdd1e85d1000534c0b0bdfc).
 
