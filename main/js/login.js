@@ -13,6 +13,14 @@ function handleLogin(){
 	var query="MATCH (n:User {userid=" + userid + " , password=" + password +"})";  //QUERY TO USE WHEN IMPLEMENTING DATABASE FOR LOGIN FEATURE
 	
 	if (userid == "admin" && password == "admin"){
-		window.location.href = "Course Search.html"
+		window.location.href = "Course Search.html";
+	}
+}
+
+function customGender(){
+	if (document.querySelector('input[name="gender"]:checked').value == "other"){
+		document.getElementById("customGender").innerHTML = "<th style=\"text-align:right;\"></th><td><input type=\"text\" id=\"optgender\" value=\"Gender(Optional)\"/></td>";
+	} else {
+		document.getElementById("customGender").innerHTML = "";
 	}
 }
