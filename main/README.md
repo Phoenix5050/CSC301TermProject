@@ -33,7 +33,8 @@ Assuming the [Team FTA GitHub repo](https://github.com/UTMCSC301/project-full-th
 7. Commit your changes to your new branch
 8. Publish your branch to the [project-full-throttle-axolotl repo](https://github.com/UTMCSC301/project-full-throttle-axolotl.git)
 9. From there, create a pull request for your new branch
-10. Merge the pull request into the master branch, then safely delete your branch
+10. Merge the pull request into the master branch
+11. Once you are certain your work on your Jira ticket is complete, then safely delete your branch.
 
 [Take a look at this example commit made for reference](https://github.com/UTMCSC301/project-full-throttle-axolotl/commit/f1440740c1be42800cdd1e85d1000534c0b0bdfc).
 
