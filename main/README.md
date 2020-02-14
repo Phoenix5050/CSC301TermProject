@@ -26,7 +26,7 @@ Assuming the [Team FTA GitHub repo](https://github.com/UTMCSC301/project-full-th
     _(e.g. A branch from Gordon for Sprint 1 would look like_ **s1-gordon-FUL-0**_)_
 
 3. Move your local changes over to the branch you just created
-4. Write a meaningful summary and description of what is accomplished in your changes
+4. Write your Jira ticket number in the summary with a meaningful title (e.g. "[FUL-XX] Updated ../main/README.md") and a description of what is accomplished in your changes
     - Bullet point form is fine; use “~” to separate each main detail
 5. Fetch the latest origin and merge any conflicting files if necessary
 6. Commit your changes to your new branch
