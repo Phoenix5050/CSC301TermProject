@@ -21,7 +21,7 @@
     Rohan Patil ........ 6 id/s
     Venura Perera ...... 8 id/s
 
-    Team FTA ...........  id/s
+    Team FTA ........... 46 id/s
 
 ## Sprint 1 User Story Completion Goals
 
