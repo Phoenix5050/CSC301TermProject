@@ -1,4 +1,4 @@
-# Product Backlog - Course Planner
+# Product Backlog - *Course Planner*
 
 ## **Sprint 1 Features**
 
