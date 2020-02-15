@@ -1,7 +1,7 @@
 # System Design - *Course Planner*
 
 ## **Title Page**
-![Image of Sprint 1 System Design Title Page](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/s1-gordon-FUL-21/doc/img/S1%20-%20System%20Design%20Title%20Page.png)
+![Image of Sprint 1 System Design Title Page](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S1%20-%20System%20Design%20Title%20Page.png)
 
 ## **CRC Cards**
 
