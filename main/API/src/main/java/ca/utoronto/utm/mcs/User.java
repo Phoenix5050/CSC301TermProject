@@ -106,9 +106,8 @@ public class User implements HttpHandler{
 			Map<String, String> queryParams = Utils.URIparams(r.getRequestURI().getQuery());
 			String username = queryParams.get("username");
 			String password = hashPassword(queryParams.get("password"));
-			
 			String userQuery = String.format("MATCH (u:user) WHERE (u.username = \"%s\") RETURN u.username", username);
-			String passQuery = String.format("MATCH (u:user) WHERE (u.password = \"%s\") RETURN u.password", password);
+			String passQuery = String.format("MATCH (u:user) WHERE (u.username = \"%s\" AND u.password = \"%s\") RETURN u.password", username, password);
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
 				@Override
@@ -156,11 +155,13 @@ public class User implements HttpHandler{
 	private static String hashPassword(String originalPass) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		
-		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+// RANDOM SALTING WILL BE ADDED LATER, SALT WILL NEED TO BE STORED IN DATABASE WITH HASH
+/*		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
         sr.nextBytes(salt);
-        
         md.update(salt);
+        */ 
+		
         byte[] bPassword = md.digest(originalPass.getBytes(StandardCharsets.UTF_8));
         StringBuilder HashedPassword = new StringBuilder();
         for (byte b : bPassword) {
