@@ -46,6 +46,8 @@ public class User implements HttpHandler{
 	}
 	
 	private void handleRegister(HttpExchange r) throws IOException, JSONException, NoSuchAlgorithmException{
+		//r.getResponseHeaders().set("Content-Type","application/json");
+		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
 		String body = Utils.convert(r.getRequestBody());
 		JSONObject deserialized = new JSONObject(body);
 		String fname = "";

@@ -20,13 +20,13 @@
 			<div id="Register">
 				<table>
 					<tr>
-						<td><input type="text" id="Firstname" value="First Name"/></td>
-						<td><input type="text" id="Lastname" value="Last Name"/></td>
+						<td><input type="text" id="firstname" value="First Name"/></td>
+						<td><input type="text" id="lastname" value="Last Name"/></td>
 					</tr>
 					<tr><td><input type="text" id="email" value="Email"/></td></tr>
 					<tr><td><input type="text" id="age" value="Age"/></td></tr>
-					<tr><td><input type="text" id="user" value="Username"/></td></tr>
-					<tr><th><label for="password">Password:</label></th><td><input type="password" id="password" /></td></tr>
+					<tr><td><input type="text" id="rusername" value="Username"/></td></tr>
+					<tr><th><label for="password">Password:</label></th><td><input type="password" id="rpassword" /></td></tr>
 					<tr><th><label for="password">Confirm Password:</label></th><td><input type="password" id="confirmPass" /></td></tr>
 					<tr>
 						<th style="text-align:right;">Gender:</th>
@@ -40,7 +40,8 @@
 						</td>
 					</tr>
 					<tr id="customGender"><tr/>
-					<tr><th>&nbsp;</th><td><input type="button" id="register" value="Register" /></td></tr>
+					<tr id="registerError"><tr/>
+					<tr><th>&nbsp;</th><td><input type="button" id="register" value="Register" onclick="handleRegister()" /></td></tr>
 				</table>
 			</div>
 	</body>
