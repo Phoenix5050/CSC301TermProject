@@ -102,6 +102,8 @@ public class User implements HttpHandler{
 	}
 	
 	private void handleLogin(HttpExchange r) throws IOException, JSONException{
+		r.getResponseHeaders().set("Content-Type","application/json");
+		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
 		try (Session session = driver.session()){
 			Map<String, String> queryParams = Utils.URIparams(r.getRequestURI().getQuery());
 			String username = queryParams.get("username");
@@ -135,14 +137,17 @@ public class User implements HttpHandler{
 					}
 				});
 			r.sendResponseHeaders(200, transaction.length());
+			System.out.print("200");
 			OutputStream os = r.getResponseBody();
 			os.write(transaction.getBytes());
 			os.close(); 		
 		} catch (NoSuchRecordException e) {
+			System.out.print("404");
 			r.sendResponseHeaders(404, -1);
 			e.printStackTrace();
 		} catch (Exception e) {
 			r.sendResponseHeaders(400, -1);
+			System.out.print("400");
 			e.printStackTrace();
 		}
 	}
