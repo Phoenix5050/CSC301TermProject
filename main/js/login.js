@@ -38,29 +38,108 @@ function handleLogin(){
     .catch(function(err) {  
         document.write('Fetch Error :-S', err);  
     });
+}
+
+function handleRegister(){
+	var fname = document.getElementById("firstname").value;
+	var lname = document.getElementById("lastname").value;
+	var email = document.getElementById("email").value;
+	var age = parseInt(document.getElementById("age").value);
 	
+	var userid = document.getElementById("rusername").value;
+	var password = document.getElementById("rpassword").value;
+	var cPassword = document.getElementById("confirmPass").value;
 	
-	/* var loginRequest = new XMLHttpRequest();
-	loginRequest.open('GET', url, true);
-	loginRequest.setRequestHeader("Content-Type", "plain/text");
-	loginRequest.onload = function(){
-		if (loginRequest.status == 200){
-			var check = JSON.parse(loginRequest.response);
-			userResponse = check["UserResponse"];
-			passResponse = check["PassResponse"];
+	var gender = "";
+	if (document.querySelector('input[name="gender"]:checked').value == "other"){
+		if ((document.getElementById("optgender").value).length == 0){
+			gender = "Not Specified";
 		} else {
-			console.log(`error ${loginRequest.status}`);
+			gender = document.getElementById("optgender").value;
+		}
+	} else {
+		gender = document.querySelector('input[name="gender"]:checked').value;
+	}
+	
+	if (userExists() == true){
+		document.getElementById("registerError").innerHTML = "<p>Username already exists</p>";
+		return;
+	} else {
+		if (password != cPassword){
+			document.getElementById("registerError").innerHTML = "<p>Passwords do not match</p>";
+			return;
+		} else if (password.length == 0){
+			document.getElementById("registerError").innerHTML = "<p>Password empty</p>";
+			return;
+		} else {
+			var url = "http://localhost:8080/api/v1/addUser";
+			var data = {
+						"fname": fname,
+						"lname": lname,
+						"email": email,
+						"username": userid,
+						"password": password,
+						"gender": gender,
+						"age": age};
+			fetch(url, {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'omit', // include, *same-origin, omit
+				body: JSON.stringify(data),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).then((data) => {
+				console.log(data); 
+			});
 		}
 	}
-	loginRequest.send();
-	 */
+}
 
+function userExists(){
+	var userid = document.getElementById("rusername").value;
+	var password = "checker";
+	var userResponse = "";
+	var passResponse = "";
+	
+	var url = "http://localhost:8080/api/v1/checkUser?username="+userid+"&password="+password;
+	
+	fetch(url, {
+		method: 'GET', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'omit', // include, *same-origin, omit
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		}
+	}).then(  
+        function(response) {  
+            if (response.status !== 200) {  
+                console.log("Error:"+response.status);  
+                return;  
+            }
+
+            // Examine the text in the response  
+            response.json().then(function(data) {  
+				userResponse = data["UserResponse"];
+				if (userResponse == "correct"){
+					return true;
+				} else {
+					return false;
+				}
+            });  
+        }  
+    )
+    .catch(function(err) {  
+        document.write('Fetch Error :-S', err);  
+    });
 }
 
 function customGender(){
 	if (document.querySelector('input[name="gender"]:checked').value == "other"){
 		document.getElementById("customGender").innerHTML = "<th style=\"text-align:right;\"></th><td><input type=\"text\" id=\"optgender\" value=\"Gender(Optional)\"/></td>";
+		return true;
 	} else {
 		document.getElementById("customGender").innerHTML = "";
+		return false;
 	}
 }
