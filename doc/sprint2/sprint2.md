@@ -37,29 +37,31 @@
     Gordon Monk
       ~ Complete [FUL-38]
     Nabeel Rajabali
-      ~ Complete [FUL-29]
+      ~ Complete [FUL-29], [FUL-35]
     Rohan Patil
-      ~ Complete [FUL-34], [FUL-35], [FUL-36], [FUL-37]
+      ~ Complete [FUL-34], [FUL-36], [FUL-37]
     Venura Perera
       ~ Complete [FUL-32], [FUL-33]
 
 ## Sprint 2 Team Participation and Task Breakdown
 
     Aaron Strasser
-      ~ Created a legitimate database that can be accessed remotely by all devs
+      ~ Created a legitimate database that can be accessed remotely by all devs [FUL-28]
     Anusha Pahore
-      ~ Created a "My Account" page
+      ~ Created a "My Account" page [FUL-31]
     Azan Ghazi
-      ~ Updated the database with new example courses
+      ~ Created a database outline for all classes and relationships [FUL-26]
+      ~ Created example classes and relationships for new database outline [FUL-25]
     Gordon Monk
-      ~ Drafted and assigned Sprint 2 Jira tasks to devs
-      ~ Drafted new CRC cards for the System Design Doc
-      ~ Drafted Sprint 2 tracking deliverables
+      ~ Drafted and assigned Sprint 2 Jira tasks to devs [FUL-38]
+      ~ Drafted new CRC cards for the System Design Doc [FUL-38]
+      ~ Drafted Sprint 2 tracking deliverables [FUL-38]
     Nabeel Rajabali
-      ~ Updated the main Course Planner page with a new design
+      ~ Worked on the main Course Planner page's new design [FUL-29]
+        > This task is ongoing and will continue into Sprint 3
     Rohan Patil
-      ~ Create a database API that saves user input to the user’s account
-      ~ Create a User Login function
-      ~ Create a registration function on the login page
+      ~ Created a database API that saves user input to the user’s account [FUL-34]
+      ~ Created a User Login function [FUL-36]
+      ~ Created a registration function on the login page [FUL-37]
     Venura Perera
-      ~ Created a Settings page
+      ~ Created a Settings page [FUL-32]

@@ -8,6 +8,7 @@ Table of Contents               | Page 1
 ------------------------------- | --------------
 CRC Cards                       | Page 2
 Software Architecture Diagram   | Page 3
+Calendar Page Mockup            | Page 4
 ------------------------------------------------
 
 ## **CRC Cards**
@@ -15,3 +16,6 @@ Software Architecture Diagram   | Page 3
 
 ## **Software Architecture Diagram**
 ![Image of Sprint 2 Software Architecture Diagram](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S1%20-%20Software%20Architecture%20Diagram.png)
+
+## **Calendar Page Mockup**
+![Image of Sprint 2 Calendar Page Mockup]()
