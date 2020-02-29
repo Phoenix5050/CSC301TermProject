@@ -12,10 +12,10 @@ Calendar Page Mockup            | Page 4
 ------------------------------------------------
 
 ## **CRC Cards**
-![Image of Sprint 2 CRC Cards](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S1%20-%20CRC%20Cards.png)
+![Image of Sprint 2 CRC Cards](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S2%20-%20CRC%20Cards.png)
 
 ## **Software Architecture Diagram**
 ![Image of Sprint 2 Software Architecture Diagram](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S1%20-%20Software%20Architecture%20Diagram.png)
 
 ## **Calendar Page Mockup**
-![Image of Sprint 2 Calendar Page Mockup]()
+![Image of Sprint 2 Calendar Page Mockup](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/img/S2%20-%20Draft%20-%20Calendar%20Web%20Page.jpg)
