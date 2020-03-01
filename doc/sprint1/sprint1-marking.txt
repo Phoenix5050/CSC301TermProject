@@ -127,7 +127,7 @@ System Design - (PDF or MD file or another suitable format) (Max 10 marks)
   There is no web link or other reference lending support to the presented diagram.
   [0 marks: No diagram present or the presented document does not look like a software architecture diagram]
 
-Your mark:  2 + 3 + 4 = 7
+Your mark:  2 + 3 + 4 = 9
 
 
-Total mark for phase 2 : 63/75 
+Total mark for phase 2 : 66/75 
