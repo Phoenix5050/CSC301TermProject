@@ -24,6 +24,7 @@ public class App
         server.createContext("/api/v1/addUser", new User(driver));
         server.createContext("/api/v1/checkUser", new User(driver));
         server.createContext("/api/v1/updateUser", new User(driver));
+        server.createContext("/api/v1/searchCourse", new Course(driver));
         
         server.start();
         System.out.printf("Server started on port %d...\n", PORT);
