@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<script src="../js/searchbar.js"></script>
 	<title>Main Page</title>
 </head>
 
@@ -86,15 +87,19 @@
 		
 			<table style="width:100%">
 	
-				<tr>
-					<td>
-						<div style="overflow:hidden">
-							<div style="border:1px solid black">
-								<input style="width:100%" type="text" name="name" value="Enter course code to search" />
+				<div id="Searchbar">
+					<tr>
+						<td>
+							<div style="overflow:hidden">
+								<div style="border:1px solid black">
+									<label for="search"> <input style="width:100%" type="text" id="searchBar" name="name" value="Enter course code to search"/>
+									<th>&nbsp;</th><td><input type="button" id="searchButton" value="Search" onclick="handleSearch()" /></td></tr>
+									<tr id="searchError"></tr>
+								</div>
 							</div>
-						</div>
-					</td>
-				</tr>
+						</td>
+					</tr>
+				</div>
   
 				<tr>
 					<td>CSC108 - Introduction to computer programming</td>
