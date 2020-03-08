@@ -49,7 +49,7 @@ public class Course implements HttpHandler{
 			Map<String, String> queryParams = Utils.URIparams(r.getRequestURI().getQuery());
 			
 			String courseCode = queryParams.get("course");
-			
+			courseCode = courseCode.toUpperCase();
 			// Right here is the query that returns the information desired using the course code provided by the user on the webpage.
 			// Any other info that might be needed can be added by adding c.[fieldname]
 			String courseQuery = String.format("MATCH (c:Course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Semester", courseCode);
@@ -63,7 +63,6 @@ public class Course implements HttpHandler{
 						if (!courseResult.hasNext()) {
 							searchResponse.put("SearchResponse", "Course not found");
 						} else {
-							courseResult.next();
 							// this is where i format the information provided back to html
 							
 							// info is the part of the statement result with the query results
