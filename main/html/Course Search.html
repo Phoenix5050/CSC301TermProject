@@ -3,72 +3,24 @@
 
 <head>
 	<meta charset="utf-8">
-	<script src="../js/searchbar.js"></script>
+	// <script src="../js/searchbar.js"></script>
+	<link rel="stylesheet" href="../css/Course Search.css">
 	<title>Main Page</title>
 </head>
 
-<body>
-	<div id='calendar'> </div>
-	
+<body>	
 	<a href="login.html" style="float: right;">Log Out</a>
 	<br>
 	<a href="my_account.html" style="float: right;">My Account  </a>
 	
-	<div class="container">
-        <div class="floatLeft">
-			<tr><table>
-				<tr><td class="box3_t">USER SEARCH</td></tr>
-			</table></tr>
-		</div>
-
-		<div class="floatright">
-			<style>
-				table {
-					padding: 6px;
-					border: 1px solid black; 
-					border-collapse: seperate;
-				}
-
-				td {
-					padding: 15px 50px;	    
-				}
-			</style>
-		
-			<table style="width:100%">
 	
-				<tr>
-					<td>
-						<div style="overflow:hidden">
-							<div style="border:1px solid black">
-								<input style="width:100%" type="text" name="name" value="Enter name of user to connect with" />
-							</div>
-						</div>
-					</td>
-				</tr>
-  
-				<tr>
-					<td>Robert Downey Jr</td>
-					<td><button class="addButton">Connect</button></td>
-				</tr>
-
-				<tr>
-					<td>Lord Farquad</td>
-					<td><button class="addButton">Connect</button></td>
-				</tr>
-				
-				
-			</table>
-		</div>
-	</div>
 	<h1><center>Course Search</center></h1>
 
-	
-
 	<br>
 	<div class="container">
         <div class="floatLeft">
 			<tr><table>
-				<tr><td class="box3_t">COURSES</td></tr>
+				<tr><td class="coursesearchheader">COURSES</td></tr>
 			</table></tr>
 		</div>
 
@@ -84,129 +36,17 @@
 					padding: 15px 50px;	    
 				}
 			</style>
-		
-			<table style="width:100%">
-	
-				<div id="Searchbar">
-					<tr>
-						<td>
-							<div style="overflow:hidden">
-								<div style="border:1px solid black">
-									<label for="search"> <input style="width:100%" type="text" id="searchBar" name="name" value="Enter course code to search"/>
-									<th>&nbsp;</th><td><input type="button" id="searchButton" value="Search" onclick="handleSearch()" /></td></tr>
-									<tr id="searchError"></tr>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</div>
-  
-				<tr>
-					<td>CSC108 - Introduction to computer programming</td>
-					<td><button class="addButton">Add</button></td>
-				</tr>
-  
-				<tr>
-					<td>CSC148 - Introduction to computer science</td>
-					<td><button class="addButton">Add</button></td>
-				</tr>
-				
-				<tr>
-					<td><a href="Schedule.html">View Schedule</a></td>
-				</tr>
-				
-			</table>
 		</div>
 	</div>
-	
-	
-	<br>
-	<div class="container">
-        <div class="floatLeft">
-			<tr><table>
-				<tr><td class="box3_t">PREREQUISITE CHECKER</td></tr>
-			</table></tr>
-		</div>
-
-		<div class="floatright">
-			<style>
-				table {
-					padding: 6px;
-					border: 1px solid black; 
-					border-collapse: seperate;
-				}
-
-				td {
-					padding: 15px 50px;	    
-				}
-			</style>
 		
-			<table style="width:100%">
+			
 	
-				<tr>
-					<td>
-						<div style="overflow:hidden">
-							<div style="border:1px solid black">
-								<input style="width:100%" type="text" name="name" value="Enter course code to check for prerequisite" />
-							</div>
-						</div>
-					</td>
-				</tr>
-  
-			</table>
-		</div>
-	</div>
-	
-	<br>
-	
-	<div class="container">
-        <div class="floatLeft">
-			<tr><table>
-				<tr><td class="box3_t">GRADUATION PLANNER</td></tr>
-			</table></tr>
-		</div>
-
-		<div class="floatright">
-			<style>
-				table {
-					padding: 6px;
-					border: 1px solid black; 
-					border-collapse: seperate;
-				}
-
-				td {
-					padding: 15px 50px;	    
-				}
-			</style>
-		
-			<table style="width:100%">
-  
-				<tr>
-					<td>Humanities Credits: 1.0</td>
-					<td><button class="addButton" onclick="window.location.href = 'Graduation.html';">Suggested Courses</button></td>
-				</tr>
-				
-				<tr>
-					<td>Science Credits: 0.5</td>
-					<td><button class="addButton" onclick="window.location.href = 'Graduation.html';">Suggested Courses</button></td>
-				</tr>
-  
-				<tr>
-					<td>Social Science Credits: 0.5</td>
-					<td><button class="addButton" onclick="window.location.href = 'Graduation.html';">Suggested Courses</button></td>
-				</tr>
-				
-				<tr>
-					<td><a href="Graduation.html">View Graduation Planner</a></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	
-	
-		
-	
-	
+	<div class="searchbarcontainer">
+        <form> 
+          <input type="text" name="text" class="search" placeholder="Search here!">
+          <input type="submit" name="submit" class="submit" value="Search">
+        </form>
+     </div>
 
 </body>
 </html>

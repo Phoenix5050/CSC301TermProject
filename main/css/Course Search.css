@@ -1,0 +1,28 @@
+.searchbarcontainer
+ {
+      	width: 100%;
+  		border: 1px solid black;
+  		position:relative;
+ 		margin: auto;
+        display: inline-block
+
+       }
+
+      .search {
+      float:left;
+      width:85%;
+      text-align: center;
+      height:40px;
+      border:1;
+      font-size:16px;
+      display: inline-flex;
+
+      }
+     
+      .submit{
+      	height:43px;
+      	width:px;
+      	text-align: center;
+      	display: inline-flex;
+
+      }
