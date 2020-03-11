@@ -30,16 +30,28 @@ function handleLogin(){
 				} else if (userResponse == "correct" && passResponse == "incorrect"){
 					document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
 				} else if (userResponse == "correct" && passResponse == "correct"){
+					document.cookie = "username="+userid;
 					window.location.href = "Course Search.html";
 	}
             });  
         }  
     )
-    .catch(function(err) {  
-        document.write('Fetch Error :-S', err);  
-    });
 }
-
+function parseCookie(name){
+	//REFERENCED FROM: https://www.quirksmode.org/js/cookies.html
+	var nameEQ = name + "=";
+	var cookieInfo = document.cookie.split(';');
+	for(var i=0;i < cookieInfo.length;i++) {
+		var c = cookieInfo[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+function accountInfo(){
+	var username = parseCookie('username');
+	
+}
 function handleRegister(){
 	var fname = document.getElementById("firstname").value;
 	var lname = document.getElementById("lastname").value;
