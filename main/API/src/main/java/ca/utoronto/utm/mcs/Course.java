@@ -42,7 +42,6 @@ public class Course implements HttpHandler{
 	}
 		
 	private void handleSearch(HttpExchange r) throws IOException, JSONException{
-		r.getResponseHeaders().set("Content-Type","application/json");
 		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
 		
 		try (Session session = driver.session()){
