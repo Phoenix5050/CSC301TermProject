@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="../js/searchbar.js"></script>
+	<script src="../js/prerequisite.js"></script>
 	<title>Main Page</title>
 </head>
 
@@ -142,16 +143,20 @@
 			</style>
 		
 			<table style="width:100%">
-	
-				<tr>
-					<td>
-						<div style="overflow:hidden">
-							<div style="border:1px solid black">
-								<input style="width:100%" type="text" name="name" value="Enter course code to check for prerequisite" />
+				
+				<div id="prerequisiteSearch">
+					<tr>
+						<td>
+							<div style="overflow:hidden">
+								<div style="border:1px solid black">
+									<label for="search"> <input style="width:100%" type="text" id="prerequisiteSearchBar" name="name" value="Enter course code to search"/>
+									<th>&nbsp;</th><td><input type="button" id="prerequisiteSearchButton" value="Search" onclick="handlePrerequisite()" /></td></tr>
+									<tr id="prerequisiteSearchError"></tr>
+								</div>
 							</div>
-						</div>
-					</td>
-				</tr>
+						</td>
+					</tr>
+				</div>
   
 			</table>
 		</div>
