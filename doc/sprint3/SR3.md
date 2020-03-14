@@ -14,7 +14,6 @@
 - [[FUL-29]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-29) Update the main Course Planner HTML
 - [[FUL-35]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-35) Create endpoints for Course Data in the Java API
 - [[FUL-42]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-42) User Login/Registration error checking
-- [[FUL-45]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-45) Create a prerequisite checker
 - [[FUL-46]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-46) Create “prerequisite” data relationships and link each course to its respective prerequisite courses
 - [[FUL-47]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-47) Create an “isEligibleToEnrol” data relationship between user and course
 - [[FUL-48]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-48) Create a Javascript GUI to visualize courses

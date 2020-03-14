@@ -17,7 +17,7 @@
 
 ### **Prerequisite Checker**
 *"As a student, I want to be able to see all the prerequisites I would need to take a specific course."* [[FUL-7]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-7)
-- ...
+- Create a prerequisite checker [[FUL-45]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-45)
 
 ### **Calendar/Timetable Planner**
 *"As a student, I want to be able to have a visual calendar representation of my semester schedule according to a saved list of courses in my account."* [[FUL-8]](https://mcsapps.utm.utoronto.ca/jira/browse/FUL-8)

@@ -48,7 +48,7 @@
       ~ Worked on creating endpoints for Course Data in the Java API [FUL-35]
       ~ Worked on the course search feature for the main Course Planner page [FUL-41]
     Anusha Pahore
-      ~ Worked on creating a prerequisite checker [FUL-45]
+      ~ Created a prerequisite checker [FUL-45]
     Azan Ghazi
       ~ Reworked the example classes and relationships for the final database outline [FUL-25]
       ~ Worked on creating a graduation planner visualization [FUL-49]
