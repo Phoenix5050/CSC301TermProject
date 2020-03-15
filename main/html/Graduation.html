@@ -3,81 +3,50 @@
 <head>
 	<meta charset="utf-8">
 	<title>Graduation Planner</title>
-	
+	<script src="../js/table.js"></script>
 </head>
 <body>
 	<a href="Course Search.html"  style="float: right;">Back</a>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<p align = "center">Search Bar</p>
-	
+    <button onclick="addCourse()">Add Course</button>
+
 		<div class="timetable">
-			<table>
+			<table id="tablee">
 				<tr>
-					<th class="year" colspan="2">First Year</th>
-					<th class="year" colspan="2">Second Year</th>
-					<th class="year" colspan="2">Third Year</th>
-					<th class="year" colspan="2">Fourth Year</th>
+					<th class="year" id="year1" colspan="2">First Year</th>
+					<th class="year" id="year2" colspan="2">Second Year</th>
+					<th class="year" id="year3" colspan="2">Third Year</th>
+					<th class="year" id="year4" colspan="2">Fourth Year</th>
 				</tr>
 				<tr>
-					<td class="semesterFall">Fall</td>
-					<td class="semesterWinter">Winter</td>
-					<td class="semesterFall">Fall</td>
-					<td class="semesterWinter">Winter</td>
-					<td class="semesterFall">Fall</td>
-					<td class="semesterWinter">Winter</td>
-					<td class="semesterFall">Fall</td>
-					<td class="semesterWinter">Winter</td>
+					<td class="semesterFall" id="fall1">Fall</td>
+					<td class="semesterWinter" id="winter1">Winter</td>
+					<td class="semesterFall" id="fall2">Fall</td>
+					<td class="semesterWinter" id="winter2">Winter</td>
+					<td class="semesterFall" id="fall3">Fall</td>
+					<td class="semesterWinter" id="winter3">Winter</td>
+					<td class="semesterFall" id="fall4">Fall</td>
+					<td class="semesterWinter" id="winter4">Winter</td>
+                </tr>
+                
+                <tr id="1">
+					
 				</tr>
-				<tr>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
+				<tr id="2">
+					
 				</tr>
-				<tr>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
+				<tr id="3">
+					
 				</tr>
-				<tr>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
+				<tr id="4">
+					
 				</tr>
-				<tr>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-				</tr>
-				<tr>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-					<td class="course"></td>
-				</tr>
+				<tr id="5">
+					
+                </tr>
+                
+                <script>generateTable();</script>
 				
 			</table>
 		</div>
