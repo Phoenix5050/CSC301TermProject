@@ -5,37 +5,44 @@ function handleLogin(){
 	var passResponse = "";
 	
 	var url = "http://localhost:8080/api/v1/checkUser?username="+userid+"&password="+password;
-	
-	fetch(url, {
-		method: 'GET', // *GET, POST, PUT, DELETE, etc.
-		mode: 'cors', // no-cors, *cors, same-origin
-		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: 'omit', // include, *same-origin, omit
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		}
-	}).then(  
-        function(response) {  
-            if (response.status !== 200) {  
-                console.log("Error:"+response.status);  
-                return;  
-            }
+	if (userid.length==0){
+		document.getElementById("loginError").innerHTML = "<p>Username blank/missing</p>";
+		return;
+	} else if (password.length==0){
+		document.getElementById("loginError").innerHTML = "<p>Password blank/missing</p>";
+		return;
+	} else {
+		fetch(url, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'omit', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			}
+		}).then(  
+			function(response) {  
+				if (response.status !== 200) {  
+					console.log("Error:"+response.status);  
+					return;  
+				}
 
-            // Examine the text in the response  
-            response.json().then(function(data) {  
-				userResponse = data["UserResponse"];
-                passResponse = data["PassResponse"];
-				if (userResponse == "incorrect"){
-					document.getElementById("loginError").innerHTML = "<p>User does not exist</p>";
-				} else if (userResponse == "correct" && passResponse == "incorrect"){
-					document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
-				} else if (userResponse == "correct" && passResponse == "correct"){
-					document.cookie = "username="+userid;
-					window.location.href = "Course Search.html";
+				// Examine the text in the response  
+				response.json().then(function(data) {  
+					userResponse = data["UserResponse"];
+					passResponse = data["PassResponse"];
+					if (userResponse == "incorrect"){
+						document.getElementById("loginError").innerHTML = "<p>User does not exist</p>";
+					} else if (userResponse == "correct" && passResponse == "incorrect"){
+						document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
+					} else if (userResponse == "correct" && passResponse == "correct"){
+						document.cookie = "username="+userid;
+						window.location.href = "Course Search.html";
+		}
+				});  
+			}  
+		)
 	}
-            });  
-        }  
-    )
 }
 function parseCookie(name){
 	//REFERENCED FROM: https://www.quirksmode.org/js/cookies.html
@@ -73,7 +80,10 @@ function handleRegister(){
 		gender = document.querySelector('input[name="gender"]:checked').value;
 	}
 	
-	if (userExists() == true){
+	if (fname.length==0 || lname.length==0 || email.length==0 || age.length==0){
+		document.getElementById("registerError").innerHTML = "<p>Unable to Register: Missing/Blank Information</p>";
+		return;
+	} else if (userExists() == true){
 		document.getElementById("registerError").innerHTML = "<p>Username already exists</p>";
 		return;
 	} else {
@@ -141,9 +151,6 @@ function userExists(){
             });  
         }  
     )
-    .catch(function(err) {  
-        document.write('Fetch Error :-S', err);  
-    });
 }
 
 function customGender(){
