@@ -55,7 +55,10 @@ public class User implements HttpHandler{
 		String username = "";
 		String password = "";
 		String gender = "";
+		String program = "";
 		int age = 0;
+		int year = 0;
+		
 		if (deserialized.has("fname")) {
 			fname = deserialized.getString("fname");
 		}
@@ -68,6 +71,9 @@ public class User implements HttpHandler{
 		if (deserialized.has("username")) {
 			username = deserialized.getString("username");
 		}
+		if (deserialized.has("program")) {
+			program = deserialized.getString("program");
+		}
 		if (deserialized.has("password")) {
 			password = hashPassword(deserialized.getString("password"));
 		}
@@ -77,9 +83,11 @@ public class User implements HttpHandler{
 		if (deserialized.has("age")) {
 			age = deserialized.getInt("age");
 		}
-		
+		if (deserialized.has("year")) {
+			year = deserialized.getInt("year");
+		}
 		String insert = String.format("CREATE (u:user { fname: \"%s\", lname: \"%s\", email: \"%s\", "
-				+ "username: \"%s\", password: \"%s\", gender: \"%s\", age: %d })", fname, lname, email, username, password, gender, age);
+				+ "username: \"%s\", password: \"%s\", gender: \"%s\", age: %d, year: %d, program: \"%s\"})", fname, lname, email, username, password, gender, age, year, program);
 		
 		try (Session session = driver.session()){
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
@@ -158,16 +166,16 @@ public class User implements HttpHandler{
 		
 	}
 	
-	private static String hashPassword(String originalPass) throws NoSuchAlgorithmException {
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		
-// RANDOM SALTING WILL BE ADDED LATER, SALT WILL NEED TO BE STORED IN DATABASE WITH HASH
-/*		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+/*	private byte[] generateSalt() throws NoSuchAlgorithmException {
+		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
         sr.nextBytes(salt);
-        md.update(salt);
-        */ 
-		
+        return salt;
+	}*/
+	
+	private static String hashPassword(String originalPass) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+        //md.update(salt);
         byte[] bPassword = md.digest(originalPass.getBytes(StandardCharsets.UTF_8));
         StringBuilder HashedPassword = new StringBuilder();
         for (byte b : bPassword) {

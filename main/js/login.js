@@ -63,7 +63,9 @@ function handleRegister(){
 	var fname = document.getElementById("firstname").value;
 	var lname = document.getElementById("lastname").value;
 	var email = document.getElementById("email").value;
+	var program = document.getElementById("program").value;
 	var age = parseInt(document.getElementById("age").value);
+	var year = parseInt(document.getElementById("year").value);
 	
 	var userid = document.getElementById("rusername").value;
 	var password = document.getElementById("rpassword").value;
@@ -80,7 +82,7 @@ function handleRegister(){
 		gender = document.querySelector('input[name="gender"]:checked').value;
 	}
 	
-	if (fname.length==0 || lname.length==0 || email.length==0 || age.length==0){
+	if (fname.length==0 || lname.length==0 || email.length==0 || age.isNaN || year.isNaN){
 		document.getElementById("registerError").innerHTML = "<p>Unable to Register: Missing/Blank Information</p>";
 		return;
 	} else if (userExists() == true){
@@ -102,7 +104,10 @@ function handleRegister(){
 						"username": userid,
 						"password": password,
 						"gender": gender,
-						"age": age};
+						"age": age,
+						"year": year,
+						"program": program
+						};
 			fetch(url, {
 				method: 'POST', // *GET, POST, PUT, DELETE, etc.
 				mode: 'cors', // no-cors, *cors, same-origin
@@ -112,6 +117,8 @@ function handleRegister(){
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).then((data) => {
 				console.log(data); 
+			}).catch((error)=>{
+				document.getElementById("registerError").innerHTML = "Registration Error: Please try again";
 			});
 		}
 	}
