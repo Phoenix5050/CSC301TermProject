@@ -34,17 +34,67 @@ public class User implements HttpHandler{
 	public void handle(HttpExchange r) throws IOException {
 		try {
 			if(r.getRequestMethod().equals("POST")) {
-				handleRegister(r);
+				if (r.getRequestURI().getPath().equals("/api/v1/addUser")) {
+					handleRegister(r);
+				} else {
+					handleUpdate(r);
+				}
 			} else if(r.getRequestMethod().equals("GET")) {
-				handleLogin(r);
-			} else if(r.getRequestMethod().equals("PUT")) {
-				handleUpdate(r);
+				if(r.getRequestURI().getPath().equals("/api/v1/checkUser")) {
+					handleLogin(r);	
+				} else {
+					handleGet(r);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private void handleGet(HttpExchange r) throws IOException, JSONException{
+		r.getResponseHeaders().set("Content-Type","application/json");
+		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
+		try (Session session = driver.session()){
+			Map<String, String> queryParams = Utils.URIparams(r.getRequestURI().getQuery());
+			String username = queryParams.get("username");
+			String query = String.format("MATCH (u:user) WHERE (u.username = \"%s\") RETURN u.fname, u.lname, u.email, u.year, u.program", username);
+			
+			String transaction = session.writeTransaction(new TransactionWork<String>() {
+				@Override
+				public String execute(Transaction tx) {
+					JSONObject getResponse = new JSONObject();
+					StatementResult result = tx.run(query);
+					try {
+						if (result.hasNext()) {
+							Record userRecord = result.next();
+							getResponse.put("fname", userRecord.get("u.fname").asString());
+							getResponse.put("lname", userRecord.get("u.lname").asString());
+							getResponse.put("email", userRecord.get("u.email").asString());
+							getResponse.put("year", userRecord.get("u.year").asInt());
+							getResponse.put("program", userRecord.get("u.program").asString());
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					return getResponse.toString();
+					}
+				});
+			r.sendResponseHeaders(200, transaction.length());
+			System.out.print("200");
+			OutputStream os = r.getResponseBody();
+			os.write(transaction.getBytes());
+			os.close(); 	
+		} catch (NoSuchRecordException e) {
+			System.out.print("404");
+			r.sendResponseHeaders(404, -1);
+			e.printStackTrace();
+		} catch (Exception e) {
+			r.sendResponseHeaders(400, -1);
+			System.out.print("400");
+			e.printStackTrace();
+		}
+	}
+
 	private void handleRegister(HttpExchange r) throws IOException, JSONException, NoSuchAlgorithmException{
 		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
 		String body = Utils.convert(r.getRequestBody());
@@ -161,9 +211,92 @@ public class User implements HttpHandler{
 		}
 	}
 	
-	private void handleUpdate(HttpExchange r) throws IOException, JSONException{
-		// TODO Auto-generated method stub
+	private void handleUpdate(HttpExchange r) throws IOException, JSONException, NoSuchAlgorithmException{
+		r.getResponseHeaders().set("Access-Control-Allow-Origin","*");
+		String body = Utils.convert(r.getRequestBody());
+		JSONObject deserialized = new JSONObject(body);
 		
+		String username = "";
+		String email = "";
+		String password = "";
+		if (deserialized.has("email")) {
+			email = deserialized.getString("email");
+		}
+		if (deserialized.has("username")) {
+			username = deserialized.getString("username");
+		}
+		if (deserialized.has("password")) {
+			if (deserialized.getString("password").equals("")) {
+				password = "";
+			} else {
+				password = hashPassword(deserialized.getString("password"));
+			}
+		}
+		
+		if (email.equals("noChange") && !password.equals("")) {
+			String query = String.format("MATCH (u:user) WHERE (u.username = \"%s\") SET u.password = \"%s\"", username, password);
+			try (Session session = driver.session()){
+				String transaction = session.writeTransaction(new TransactionWork<String>() {
+					@Override
+					public String execute(Transaction tx) {
+						tx.run(query);
+						return "";
+					}
+				});
+				r.sendResponseHeaders(200, 0);
+				OutputStream os = r.getResponseBody();
+				os.write("".getBytes());
+				os.close();
+			} catch (IOException e) {
+				r.sendResponseHeaders(500, -1);
+				e.printStackTrace();
+			} catch (Exception e) {
+				r.sendResponseHeaders(400, -1);
+				e.printStackTrace();
+			}
+		} else if (password.equals("") && !email.equals("noChange")) {
+			String query = String.format("MATCH (u:user) WHERE (u.username = \"%s\") SET u.email = \"%s\"", username, email);
+			try (Session session = driver.session()){
+				String transaction = session.writeTransaction(new TransactionWork<String>() {
+					@Override
+					public String execute(Transaction tx) {
+						tx.run(query);
+						return "";
+					}
+				});
+				r.sendResponseHeaders(200, 0);
+				OutputStream os = r.getResponseBody();
+				os.write("".getBytes());
+				os.close();
+			} catch (IOException e) {
+				r.sendResponseHeaders(500, -1);
+				e.printStackTrace();
+			} catch (Exception e) {
+				r.sendResponseHeaders(400, -1);
+				e.printStackTrace();
+			}
+		} else {
+			String query = String.format("MATCH (u:user) WHERE (u.username = \"%s\") SET u.email = \"%s\", u.password = \"%s\"", username, email, password);
+			try (Session session = driver.session()){
+				String transaction = session.writeTransaction(new TransactionWork<String>() {
+					@Override
+					public String execute(Transaction tx) {
+						tx.run(query);
+						return "";
+					}
+				});
+				r.sendResponseHeaders(200, 0);
+				OutputStream os = r.getResponseBody();
+				os.write("".getBytes());
+				os.close();
+			} catch (IOException e) {
+				r.sendResponseHeaders(500, -1);
+				e.printStackTrace();
+			} catch (Exception e) {
+				r.sendResponseHeaders(400, -1);
+				e.printStackTrace();
+			}
+		}
 	}
 	
 /*	private byte[] generateSalt() throws NoSuchAlgorithmException {

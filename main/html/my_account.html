@@ -9,7 +9,7 @@
 </head>
 
 
-<body onload="">
+<body onload="getUserInfo()">
 	<a href="Course Search.html">Back</a>
 	<h1><center>My Account</center></h1>
 	
@@ -38,59 +38,37 @@
 			</style>
 		
 			<table style="width:100%">
-	
-  
 				<tr>
-					<td>First name: John</td>
-					<td>Last name: Doe</td>
+					<td><label id="fname"></label></td>
+					<td><label id="lname"></label></td>
 				</tr>
-
 				<tr>
-					<td>Year: 3</td>
+					<td><label id="program"></label></td>
 				</tr>
-				
+				<tr>
+					<td><label id="year"></label></td>
+				</tr>
+				<tr>
+					<td><label id="username"></label></td>
+				</tr>
 			</table>
+			<br/>
+			<fieldset>
+					<legend>Update Information</legend>
+					<label for="email">Email:</label><input type="text" id="email" />
+					<br/>
+					<br/>
+					<label for="newPass">New Password:</label><input type="password" id="newPass" />
+					<br/>
+					<br/>
+					<label for="cnewPass">Confirm new Password:</label><input type="password" id="cnewPass" />
+					<br/>
+					<p id="updateError"><p/>
+					<br/>
+					<input type="button" id="update" value="Update Information" onclick="updateUser()"/>
+			</fieldset>
 		</div>
 	</div>
-	
-	<br>
-	<div class="container">
-        <div class="floatLeft">
-			<tr><table>
-				<tr><td class="box3_t">SCHEDULE SHARING</td></tr>
-			</table></tr>
-		</div>
-
-		<div class="floatright">
-			<style>
-				table {
-					padding: 6px;
-					border: 1px solid black; 
-					border-collapse: seperate;
-				}
-
-				td {
-					padding: 15px 50px;	    
-				}
-			</style>
-		
-			<table style="width:100%">
-				<tr>
-					<td>Who can view your schedule?</td>
-					
-					<td><select id="sharing" name="sharing">
-						<option value="no">No one can view my schedule</option>
-						<option value="friends">Only my friends can view my schedule</option>
-						<option value="yes">Everyone can view my schedule</option>
-					</select></td>
-				</tr>
-				
-			</table>
-		</div>
-	</div>
-	
-	<br>
-	<button class="addButton">Save Settings</button>
 	
 </body>
 
