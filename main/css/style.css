@@ -1,0 +1,39 @@
+body {
+    background-color: linen;
+}
+
+h1 {
+	color: black;
+	text-align: center;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+h2 {
+	color: blue;
+	background-color: linen;
+	padding-top: 15px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+p {
+	color:gray;
+	font-family: "Verdana";
+}
+
+.container{
+	background-color: #9cabc9;
+	border: 1px solid black; 
+}	
+
+table {
+	color: black;
+	font-size: 15px;
+	font-family: "Verdana";
+
+	padding: 6px;
+	border-collapse: seperate;
+}
+
+td {
+	padding: 15px 50px;	    
+}
