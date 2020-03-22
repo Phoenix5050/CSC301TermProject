@@ -23,6 +23,7 @@ public class App
         
         server.createContext("/api/v1/addUser", new User(driver));
         server.createContext("/api/v1/checkUser", new User(driver));
+        server.createContext("/api/v1/getUser", new User(driver));
         server.createContext("/api/v1/updateUser", new User(driver));
         server.createContext("/api/v1/searchCourse", new Course(driver));
         server.createContext("/api/v1/checkPrerequisite", new Prerequisite(driver));
