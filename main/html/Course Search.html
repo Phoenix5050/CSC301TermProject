@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	// <script src="../js/searchbar.js"></script>
+	<script src="../js/searchbar.js"></script>
 	<link rel="stylesheet" href="../css/Course Search.css">
 	<title>Main Page</title>
 </head>
@@ -32,21 +32,21 @@
 					border-collapse: seperate;
 				}
 
-				td {
-					padding: 15px 50px;	    
-				}
+				
 			</style>
 		</div>
 	</div>
 		
 			
 	
-	<div class="searchcontainer">
-        <form class="searchbar"> 
-          <input type="text" name="text" class="search" placeholder="Search here!">
-          <input type="submit" name="submit" class="submit" value="Search">
+	<div class="searchcontainer" id="searchcontainer">
+        <form class="searchbar" id="searchbar"> 
+          <input id="searchfield" type="text" name="text" class="searchfield" placeholder="Search here!">
+          <input type="submit" name="submitbutton" class="submitbutton" value="Search">
         </form>
      </div>
+     <br>
+	<script src="../js/Course Search.js"></script>
 
 </body>
 </html>
