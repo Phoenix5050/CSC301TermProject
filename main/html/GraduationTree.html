@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Graduation Tree</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../js/tree.js"></script>
+		<script src="../js/go.js"></script>
+	</head>
+	<body onload="generateTree()">
+		<h1>Graduation Tree Sample</h1>
+		<div><label for="course">Course Code:</label><input type="text" id="code"/>
+		<input type="button" id="submit" value="Add" onclick="addCourse()"/></div>
+		<div id="courseError"></div>
+		<div id="courseName"></div>
+		<div id="courseYear"></div>
+		<div id="courseSeason"></div>
+		<div id="courseCampus"></div>
+		<div id="courseDist"></div>
+		<div id="gradTree" style="width:300px; height:300px; border:1px solid black;"></div>
+	
+	</body>
+</html>

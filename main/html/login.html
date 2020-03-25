@@ -2,8 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="../js/login.js"></script>
 		<title>Course Planner Login</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<h1>Login to Course Planner</h1>
@@ -20,12 +24,22 @@
 			<div id="Register">
 				<table>
 					<tr>
-						<td><input type="text" id="firstname" value="First Name"/></td>
-						<td><input type="text" id="lastname" value="Last Name"/></td>
+						<td><input type="text" id="firstname" placeholder="First Name"/></td>
+						<td><input type="text" id="lastname" placeholder="Last Name"/></td>
 					</tr>
-					<tr><td><input type="text" id="email" value="Email"/></td></tr>
-					<tr><td><input type="text" id="age" value="Age"/></td></tr>
-					<tr><td><input type="text" id="rusername" value="Username"/></td></tr>
+					<tr><td><input type="text" id="email" placeholder="Email"/></td></tr>
+					<tr><td><input type="number" id="age" placeholder="Age"/></td></tr>
+					
+					<tr><th><label for="program">Program:</label></th><td>
+						<select id="program">
+							<option value="Computer Science">Computer Science</option>
+							<option value="Statistics">Statistics</option>
+							<option value="Mathematics">Mathematics</option>
+						</select>
+					</td></tr>
+					
+					<tr><td><input type="number" id="year" placeholder="Year"/></td></tr>
+					<tr><td><input type="text" id="rusername" placeholder="Username"/></td></tr>
 					<tr><th><label for="password">Password:</label></th><td><input type="password" id="rpassword" /></td></tr>
 					<tr><th><label for="password">Confirm Password:</label></th><td><input type="password" id="confirmPass" /></td></tr>
 					<tr>

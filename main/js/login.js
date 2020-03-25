@@ -5,46 +5,137 @@ function handleLogin(){
 	var passResponse = "";
 	
 	var url = "http://localhost:8080/api/v1/checkUser?username="+userid+"&password="+password;
-	
-	fetch(url, {
-		method: 'GET', // *GET, POST, PUT, DELETE, etc.
-		mode: 'cors', // no-cors, *cors, same-origin
-		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: 'omit', // include, *same-origin, omit
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		}
-	}).then(  
-        function(response) {  
-            if (response.status !== 200) {  
-                console.log("Error:"+response.status);  
-                return;  
-            }
+	if (userid.length==0){
+		document.getElementById("loginError").innerHTML = "<p>Username blank/missing</p>";
+		return;
+	} else if (password.length==0){
+		document.getElementById("loginError").innerHTML = "<p>Password blank/missing</p>";
+		return;
+	} else {
+		fetch(url, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'omit', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			}
+		}).then(  
+			function(response) {  
+				if (response.status !== 200) {  
+					console.log("Error:"+response.status);  
+					return;  
+				}
 
-            // Examine the text in the response  
-            response.json().then(function(data) {  
-				userResponse = data["UserResponse"];
-                passResponse = data["PassResponse"];
-				if (userResponse == "incorrect"){
-					document.getElementById("loginError").innerHTML = "<p>User does not exist</p>";
-				} else if (userResponse == "correct" && passResponse == "incorrect"){
-					document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
-				} else if (userResponse == "correct" && passResponse == "correct"){
-					window.location.href = "Course Search.html";
+				// Examine the text in the response  
+				response.json().then(function(data) {  
+					userResponse = data["UserResponse"];
+					passResponse = data["PassResponse"];
+					if (userResponse == "incorrect"){
+						document.getElementById("loginError").innerHTML = "<p>User does not exist</p>";
+					} else if (userResponse == "correct" && passResponse == "incorrect"){
+						document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
+					} else if (userResponse == "correct" && passResponse == "correct"){
+						document.cookie = "username="+userid;
+						window.location.href = "Course Search.html";
+					}
+				});  
+			});
 	}
-            });  
-        }  
-    )
-    .catch(function(err) {  
-        document.write('Fetch Error :-S', err);  
-    });
 }
+function parseCookie(name){
+	//REFERENCED FROM: https://www.quirksmode.org/js/cookies.html
+	var nameEQ = name + "=";
+	var cookieInfo = document.cookie.split(';');
+	for(var i=0;i < cookieInfo.length;i++) {
+		var c = cookieInfo[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+function getUserInfo(){
+	var username = parseCookie('username');
+	var url = "http://localhost:8080/api/v1/getUser?username="+username;
+	fetch(url, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'omit', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			}
+	}).then(function(response) {  
+				if (response.status !== 200) {  
+					console.log("Error:"+response.status);  
+					return;  
+				}
 
+				// Examine the text in the response  
+				response.json().then(function(data) {
+					document.getElementById("fname").innerHTML = "First Name:" + data["fname"];
+					document.getElementById("lname").innerHTML = "Last Name:" + data["lname"];
+					document.getElementById("program").innerHTML = "Program:" + data["program"];
+					document.getElementById("year").innerHTML = "Year:" + data["year"];
+					document.getElementById("username").innerHTML = "Username:" + username;
+					document.getElementById("email").value = data["email"];
+					document.cookie="email="+data["email"];
+				});
+			});
+	
+}
+function updateUser(){
+	var username = parseCookie('username');
+	var email = document.getElementById("email").value;
+	var newPassword = document.getElementById("newPass").value;
+	var cnewPassword = document.getElementById("cnewPass").value;
+	
+	if (newPassword.length==0 && cnewPassword.length==0 && email== parseCookie("email")){
+		document.getElementById("updateError").innerHTML = "No changes made";
+		return;
+	}
+	if (email.length==0){
+		document.getElementById("updateError").innerHTML = "Email cannot be empty";
+		return;
+	} else if (email == parseCookie("email")){
+		email="noChange";
+	}
+	if (newPassword.length!=0 && cnewPassword.length!=0 && newPassword.length < 6){
+		document.getElementById("updateError").innerHTML = "Password must longer than 6 characters";
+		return;
+	}
+	
+	if (newPassword != cnewPassword){
+		document.getElementById("updateError").innerHTML = "Passwords do not match";
+		return;
+	} else {
+		var url = "http://localhost:8080/api/v1/updateUser"
+		var data = {
+			"username": username,
+			"email": email,
+			"password": newPassword
+		};
+		fetch(url, {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'omit', // include, *same-origin, omit
+				body: JSON.stringify(data),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).then((data) => {
+				document.getElementById("updateError").innerHTML = "Update successful";
+		}).catch((error)=>{
+				document.getElementById("updateError").innerHTML = "Update Error: Please try again";
+		});
+	}
+}
 function handleRegister(){
 	var fname = document.getElementById("firstname").value;
 	var lname = document.getElementById("lastname").value;
 	var email = document.getElementById("email").value;
+	var program = document.getElementById("program").value;
 	var age = parseInt(document.getElementById("age").value);
+	var year = parseInt(document.getElementById("year").value);
 	
 	var userid = document.getElementById("rusername").value;
 	var password = document.getElementById("rpassword").value;
@@ -61,15 +152,18 @@ function handleRegister(){
 		gender = document.querySelector('input[name="gender"]:checked').value;
 	}
 	
-	if (userExists() == true){
+	if (fname.length==0 || lname.length==0 || email.length==0 || age.isNaN || year.isNaN){
+		document.getElementById("registerError").innerHTML = "<p>Unable to Register: Missing/Blank Information</p>";
+		return;
+	} else if (userExists() == true){
 		document.getElementById("registerError").innerHTML = "<p>Username already exists</p>";
 		return;
 	} else {
 		if (password != cPassword){
 			document.getElementById("registerError").innerHTML = "<p>Passwords do not match</p>";
 			return;
-		} else if (password.length == 0){
-			document.getElementById("registerError").innerHTML = "<p>Password empty</p>";
+		} else if (password.length < 0){
+			document.getElementById("registerError").innerHTML = "<p>Password must be longer than 6 characters</p>";
 			return;
 		} else {
 			var url = "http://localhost:8080/api/v1/addUser";
@@ -80,7 +174,10 @@ function handleRegister(){
 						"username": userid,
 						"password": password,
 						"gender": gender,
-						"age": age};
+						"age": age,
+						"year": year,
+						"program": program
+						};
 			fetch(url, {
 				method: 'POST', // *GET, POST, PUT, DELETE, etc.
 				mode: 'cors', // no-cors, *cors, same-origin
@@ -89,12 +186,13 @@ function handleRegister(){
 				body: JSON.stringify(data),
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).then((data) => {
-				console.log(data); 
+				document.getElementById("registerError").innerHTML = "Registration successful";
+			}).catch((error)=>{
+				document.getElementById("registerError").innerHTML = "Registration Error: Please try again";
 			});
 		}
 	}
 }
-
 function userExists(){
 	var userid = document.getElementById("rusername").value;
 	var password = "checker";
@@ -129,9 +227,6 @@ function userExists(){
             });  
         }  
     )
-    .catch(function(err) {  
-        document.write('Fetch Error :-S', err);  
-    });
 }
 
 function customGender(){

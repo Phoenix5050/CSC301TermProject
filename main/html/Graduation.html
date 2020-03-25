@@ -1,320 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Graduation Planner Suggested Courses</title>
-		<style>
-      table, th, td {
-      padding: 10px;
-      border: 1px solid black; 
-      border-collapse: separate;
-      }
-    </style>
-	</head>
-	<body>
-<a href="Course Search.html"  style="float: right;">Back</a>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<table>
-  <thead>
-    <tr>
-      <th>Year \ Semester</th>
-      <th class="season" colspan="30"><span>Fall</span></th>
-      <th class="season" colspan="30"><span>Winter</span></th>
-      <th class="season" colspan="30"><span>Summer</span></th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="hour" rowspan="8"><span>1st year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Graduation Planner</title>
+	<script src="../js/table.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+	<a href="Course Search.html"  style="float: right;">Back</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<p align = "center">Search Bar</p>
+    <button onclick="addCourse()">Add Course</button>
 
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    
-    <tr>
-      <td class="hour" rowspan="8"><span>2nd year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    
-    <tr>
-
-    <tr>
-      <td class="hour" rowspan="8"><span>3rd year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-      <td class="hour" rowspan="8"><span>4th year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    
-    <tr>
-      <td class="hour" rowspan="8"><span>5th year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-      <td class="hour" rowspan="8"><span>6th year</span></td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-    <tr>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-      <td rowspan="4" colspan="10">COURSE</td>
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-
-    <tr>
-  
-    </tr>
-  </tbody>
-
-  
-</table>
+		<div class="timetable">
+			<table id="tablee">
+				<tr>
+					<th class="year" id="year1" colspan="2">First Year</th>
+					<th class="year" id="year2" colspan="2">Second Year</th>
+					<th class="year" id="year3" colspan="2">Third Year</th>
+					<th class="year" id="year4" colspan="2">Fourth Year</th>
+				</tr>
+				<tr>
+					<td class="semesterFall" id="fall1">Fall</td>
+					<td class="semesterWinter" id="winter1">Winter</td>
+					<td class="semesterFall" id="fall2">Fall</td>
+					<td class="semesterWinter" id="winter2">Winter</td>
+					<td class="semesterFall" id="fall3">Fall</td>
+					<td class="semesterWinter" id="winter3">Winter</td>
+					<td class="semesterFall" id="fall4">Fall</td>
+					<td class="semesterWinter" id="winter4">Winter</td>
+                </tr>
+                
+                <tr id="1">
+					
+				</tr>
+				<tr id="2">
+					
+				</tr>
+				<tr id="3">
+					
+				</tr>
+				<tr id="4">
+					
+				</tr>
+				<tr id="5">
+					
+                </tr>
+                
+                <script>generateTable();</script>
+				
+			</table>
+		</div>
+	</div>
+	<style type="text/css">
+		
+		.timetable{
+			float:left;
+			width:764px;
+		}
+		.timetable table{
+			background:#FF6347;
+			width:200%;
+		}
+		
+		.timetable td{
+			background:#fafafa;
+			color:#444;
+			text-align:center;
+			padding:35px;
+		}
+		.timetable td.semesterFall{
+			background:#D2691E;
+			border: 1px solid #D2691E;
+		}
+		.timetable td.semesterWinter{
+			background:#E0FFFF;
+			border: 1px solid #E0FFFF;
+		}
+		.timetable td.course{
+			background:#F0FFFF;
+			border: 5px solid black;
+			width:100px;
+		}
+		.timetable td.over{
+			background:#FBEC88;
+		}
+		
+		
+	</style>
+	
 </body>
+</html>
