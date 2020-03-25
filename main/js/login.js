@@ -6,10 +6,10 @@ function handleLogin(){
 	
 	var url = "http://localhost:8080/api/v1/checkUser?username="+userid+"&password="+password;
 	if (userid.length==0){
-		document.getElementById("loginError").innerHTML = "<p>Username blank/missing</p>";
+		document.getElementById("loginError").innerHTML = "Username blank/missing";
 		return;
 	} else if (password.length==0){
-		document.getElementById("loginError").innerHTML = "<p>Password blank/missing</p>";
+		document.getElementById("loginError").innerHTML = "Password blank/missing";
 		return;
 	} else {
 		fetch(url, {
@@ -32,9 +32,9 @@ function handleLogin(){
 					userResponse = data["UserResponse"];
 					passResponse = data["PassResponse"];
 					if (userResponse == "incorrect"){
-						document.getElementById("loginError").innerHTML = "<p>User does not exist</p>";
+						document.getElementById("loginError").innerHTML = "User does not exist";
 					} else if (userResponse == "correct" && passResponse == "incorrect"){
-						document.getElementById("loginError").innerHTML = "<p>Incorrect Password</p>";
+						document.getElementById("loginError").innerHTML = "Incorrect Password";
 					} else if (userResponse == "correct" && passResponse == "correct"){
 						document.cookie = "username="+userid;
 						window.location.href = "Course Search.html";
@@ -231,10 +231,19 @@ function userExists(){
 
 function customGender(){
 	if (document.querySelector('input[name="gender"]:checked').value == "other"){
-		document.getElementById("customGender").innerHTML = "<th style=\"text-align:right;\"></th><td><input type=\"text\" id=\"optgender\" value=\"Gender(Optional)\"/></td>";
+		document.getElementById("customGender").innerHTML = "<input type=\"text\" id=\"optgender\" placeholder=\"Gender(Optional)\"/>";
 		return true;
 	} else {
 		document.getElementById("customGender").innerHTML = "";
 		return false;
 	}
+}
+
+function selectLogin(){
+	$("#Login").show();
+	$("#Register").hide();
+}
+function selectRegister(){
+	$("#Login").hide();
+	$("#Register").show();
 }
