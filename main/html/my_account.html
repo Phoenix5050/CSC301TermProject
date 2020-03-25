@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -9,54 +8,48 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
-
 <body onload="getUserInfo()">
 	<a href="Course Search.html">Back</a>
 	<h1><center>My Account</center></h1>
-	
-	<br>
-	
-	<p>Change your account settings here</p>
-	
-	<h2>User Information</h2>
-	<div class="container">
-     
-
-		<div class="floatright">
-		
-			<table style="width:100%">
-				<tr>
-					<td><label id="fname"></label></td>
-					<td><label id="lname"></label></td>
-				</tr>
-				<tr>
-					<td><label id="program"></label></td>
-				</tr>
-				<tr>
-					<td><label id="year"></label></td>
-				</tr>
-				<tr>
-					<td><label id="username"></label></td>
-				</tr>
-			</table>
-			<br/>
+	<center>
+		<h2>User Information</h2>
+		<div class="container">
+			<div class="floatright">
+			
+				<table>
+					<tr>
+						<td><label id="fname"></label></td>
+						<td><label id="lname"></label></td>
+					</tr>
+					<tr>
+						<td><label id="program"></label></td>
+					</tr>
+					<tr>
+						<td><label id="year"></label></td>
+					</tr>
+					<tr>
+						<td><label id="username"></label></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="updateContainer">
 			<fieldset>
-					<legend>Update Information</legend>
-					<label for="email">Email:</label><input type="text" id="email" />
-					<br/>
-					<br/>
-					<label for="newPass">New Password:</label><input type="password" id="newPass" />
-					<br/>
-					<br/>
-					<label for="cnewPass">Confirm new Password:</label><input type="password" id="cnewPass" />
-					<br/>
-					<p id="updateError"><p/>
-					<br/>
-					<input type="button" id="update" value="Update Information" onclick="updateUser()"/>
+				<legend>Update Information</legend>
+				<label>Email:</label>
+				<input type="text" id="email" />
+				<br/>
+				<label>New Password:</label>
+				<input type="password" id="newPass" />
+				<br/>
+				<label>Confirm new Password:</label>
+				<input type="password" id="cnewPass" />
+				<br/>
+				<p id="updateError"><p/>
+				<input type="button" id="update" value="Update Information" onclick="updateUser()"/>
 			</fieldset>
 		</div>
-	</div>
-	
+	</center>
 </body>
 
 </html>
