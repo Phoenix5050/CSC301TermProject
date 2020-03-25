@@ -123,7 +123,6 @@ public class Course implements HttpHandler{
 					try {
 						if (result.hasNext()) {
 							Record courseRecord = result.next();
-							
 							getResponse.put("Name", courseRecord.get("c.Name").asString());
 							getResponse.put("Year", courseRecord.get("c.Year").asString());
 							getResponse.put("Season", courseRecord.get("c.Season").asString());
