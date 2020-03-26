@@ -9,15 +9,20 @@ window.addEventListener("load", function(){
 
     const coursesbody = document.createElement('tbody');
     coursesbody.className = "lectureTableBody";
-    //testFunction("random text");
+    
     searchForm.addEventListener("submit",function(e) {
     e.preventDefault(); // before the code
     /* do what you want with the form */
 
     // Should be triggered on form submit
     const courseSearched = searchfield.value;
+    console.log("Course searched is "+courseSearched);
     clearPage(searchbarcontainer,courses,coursesbody);
-    if(courseSearched == courseCode){
+    handleSearch(courseSearched);
+    var courseSearchResponse = parseCookie("courseResponse");
+    console.log(courseSearchResponse);
+
+    if(courseSearchResponse!=='Course not found'){
         insertLectureHeader(coursesbody);
         const fallSemester=insertFallSemester(coursesbody);
         const winterSemester=insertWinterSemester(coursesbody);
@@ -33,11 +38,17 @@ window.addEventListener("load", function(){
     }
     else{
         (function(){
-            alert("COURSE "+courseSearched+" NOT FOUND");
+            if (courseSearchResponse==null){
+                message="Cookie not found";
+            }
+            else{
+                message="COURSE "+courseSearched+" NOT FOUND";
+            }
+            alert(message);
             const errorMessage = coursesbody.insertRow(0);
             const errorMessageText = document.createElement("H6");
             errorMessageText.className = 'errormessage';
-            errorMessageText.innerText = "COURSE "+courseSearched+" NOT FOUND";
+            errorMessageText.innerText = message;
             errorMessage.appendChild(errorMessageText);
      })();
    }
@@ -250,6 +261,17 @@ window.addEventListener("load", function(){
         addToTable(courses,coursesbody);
         addToContainer(container,courses);
     }
+    function parseCookie(name){
+	//REFERENCED FROM: https://www.quirksmode.org/js/cookies.html
+	var nameEQ = name + "=";
+	var cookieInfo = document.cookie.split(';');
+	for(var i=0;i < cookieInfo.length;i++) {
+		var c = cookieInfo[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
 });
 // coursesbody.appendChild(currentcoursesheader);
 // coursesbody.appendChild(fallheader);

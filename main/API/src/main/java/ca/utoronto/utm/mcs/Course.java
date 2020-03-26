@@ -56,7 +56,7 @@ public class Course implements HttpHandler{
 			courseCode = courseCode.toUpperCase();
 			// Right here is the query that returns the information desired using the course code provided by the user on the webpage.
 			// Any other info that might be needed can be added by adding c.[fieldname]
-			String courseQuery = String.format("MATCH (c:course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Semester", courseCode);
+			String courseQuery = String.format("MATCH (c:Course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Semester", courseCode);
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
 				@Override
