@@ -9,7 +9,7 @@ window.addEventListener("load", function(){
 
     const coursesbody = document.createElement('tbody');
     coursesbody.className = "lectureTableBody";
-
+    //testFunction("random text");
     searchForm.addEventListener("submit",function(e) {
     e.preventDefault(); // before the code
     /* do what you want with the form */
