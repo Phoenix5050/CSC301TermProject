@@ -4,20 +4,27 @@
 		<meta charset="utf-8">
 		<title>Graduation Tree</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="../js/tree.js"></script>
+		<script src="../js/TreeTest.js"></script>
 		<script src="../js/go.js"></script>
 	</head>
 	<body onload="generateTree()">
-		<h1>Graduation Tree Sample</h1>
-		<div><label for="course">Course Code:</label><input type="text" id="code"/>
-		<input type="button" id="submit" value="Add" onclick="addCourse()"/></div>
+		<h1>Graduation Tree</h1>
+		<input type="button" id="details" value="Add Year" onclick="addYear()"/>
+		<div><label for="course"> AddCourse Code:</label><input type="text" id="code"/>
+			<input type="button" id="details" value="Details" onclick="details()"/>
+			<input type="button" id="submit" value="Insert" onclick="addCourse()"/></div>
+		<div><label for="course"> AddLink From: </label><input type="text" id="link1"/>
+			<label for="course"> AddLink To:</label><input type="text" id="link2"/>
+			<input type="button" id="submit" value="Add" onclick="addLink()"/></div>
 		<div id="courseError"></div>
 		<div id="courseName"></div>
 		<div id="courseYear"></div>
 		<div id="courseSeason"></div>
 		<div id="courseCampus"></div>
 		<div id="courseDist"></div>
-		<div id="gradTree" style="width:700px; height:500px; border:1px solid black;"></div>
+		<div id="courseDep"></div>
+		<div id="gradTree"
+         style="width:800px; height:500px; background-color: #DAE4E4;"></div>
 		<button onclick="save()" >Save</button><button onclick="load()">Load</button>
 	
 	</body>
