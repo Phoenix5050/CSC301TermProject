@@ -112,7 +112,7 @@ public class Course implements HttpHandler{
 		try (Session session = driver.session()){
 			Map<String, String> queryParams = Utils.URIparams(r.getRequestURI().getQuery());
 			String course = queryParams.get("course");
-			String query = String.format("MATCH (c:course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Season, c.Campus, c.Dist", course);
+			String query = String.format("MATCH (c:course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Season, c.Campus, c.Dist, c.Dep", course);
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
 				@Override
@@ -128,6 +128,7 @@ public class Course implements HttpHandler{
 							getResponse.put("Season", courseRecord.get("c.Season").asString());
 							getResponse.put("Campus", courseRecord.get("c.Campus").asString());
 							getResponse.put("Dist", courseRecord.get("c.Dist").asString());
+							getResponse.put("Dep", courseRecord.get("c.Dep").asString());
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
