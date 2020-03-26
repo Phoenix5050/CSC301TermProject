@@ -1,86 +1,143 @@
-function generateTable() {
+function generateTable2() {
     for (var i = 1; i < 6; i++){
-        var row = document.getElementById(i);
         for (var j = 0; j < 8; j++){
-            var cell = row.insertCell(j);
+            var cell = document.getElementById(""+i+j);
             cell.value = 0;
-            cell.innerHTML = "________"
+            cell.innerHTML = "--------";
         }
     }
 }
-function addCourse() {
-    var courses = ["CSC108F3", "CSC148F3", "CSC207F3", "CSC209F3", "CSC301F3", "MAT102F2", "MAT153W1", "STA256W4"]; //list of courses to add
-    while (courses.length > 0){
-        var c = courses.pop();
-        var year = c.charAt(c.length - 1); // the year of the course
-        var sem = c.charAt(c.length - 2);  // the sem of the course
-        var inserted = false;
-        var index;
-        if (year == 1){
-            if (sem == "F"){
-                index = 0;
-            }
-            else if (sem == "W"){
-                index = 1;
-            }
-        }
-        else if(year == 2){
-            if (sem == "F"){
-                index = 2;
-            }
-            else if (sem == "W"){
-                index = 3;
-            }
-        }
-        else if(year == 3){
-            if (sem == "F"){
-                index = 4;
-            }
-            else if (sem == "W"){
-                index = 5;
-            }
-        }
-        else if(year == 4){
-            if (sem == "F"){
-                index = 6;
-            }
-            else if (sem == "W"){
-                index = 7;
-            }
-        }
-        var row = 1;
-        var courseList = [];
-        if (dupCourse(courseList, c) == false){
-            while (inserted == false){
-                if(row > 5){
-                    alert("Semester full cannot add: " + c.substring(0,6) + " to year " + year + " and semester " + sem);
-                    inserted = true;
-                }
-                else if(document.getElementById(row).cells[index].value == 1){
-                    row++;
-                }
-                else{
-                    document.getElementById(row).cells[index].innerHTML = c.substring(0,6);
-                    document.getElementById(row).cells[index].value = 1;
-                    courseList.push(c.substring(0,6));
-                    inserted = true;
-                }
-            }
-        }
-        
-        
-    }
+
+function removeCourse(id){
+    var cell = document.getElementById(id)
+    cell.removeAttribute("title");
+    cell.onmouseover = function(){this.style.backgroundColor = "azure";};
+    cell.innerHTML = "--------";
+    cell.value = 0;
+}
+
+function addCourseToTable() {
+    var courseCode = document.getElementById("code").value;
+	var cName = "";
+	var cYear = "";
+	var cSeason = "";
+	var cCampus = "";
+	var cDist = "";
+	var url = "http://localhost:8080/api/v1/searchCourseTree?course="+courseCode;
+	if (courseCode.length==0){
+		document.getElementById("courseError").innerHTML = "<p>Course blank/missing</p>";
+		return;
+	} else {
+		//document.getElementById("courseError").innerHTML = "<p></p>";
+		fetch(url, {
+			method: 'GET', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'omit', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			}
+		}).then( 
+			function(response) {  
+				if (response.status !== 200) {  
+					alert("ERROR"); 
+					console.log("Error:"+response.status);  
+					return;  
+				}
+				// Examine the text in the response  
+				response.json().then(function(data) {  
+                    //document.getElementById("11").innerHTML = courseCode;
+                    //console.log(document.getElementById("11").innerHTML);
+                    cName = data["Name"];
+                    //console.log("name: " + cName);
+                    cYear = data["Year"];
+                    //console.log("year: " + cYear);
+					cSeason = data["Season"];
+					cCampus = data["Campus"];
+                    cDist = data["Dist"];
+                    //cYear = "1"; // TESTING PURPOSES
+                    //cSeason = "Fall"; // TESTING PURPOSES
+                    var inserted = false;
+                    var index;
+                    if (cYear == "1"){
+                        if (cSeason == "Fall"){
+                        index = 0;
+                        }
+                        else if (cSeason == "Winter"){
+                            index = 1;
+                        }
+                    }
+                    else if(cYear == "2"){
+                        if (cSeason == "Fall"){
+                            index = 2;
+                        }
+                        else if (cSeason == "Winter"){
+                            index = 3;
+                        }
+                    }
+                    else if(cYear == "3"){
+                        if (cSeason == "Fall"){
+                            index = 4;
+                        }
+                        else if (cSeason == "Winter"){
+                            index = 5;
+                        }
+                    }
+                    else if(cYear == "4"){
+                        if (cSeason == "Fall"){
+                            index = 6;
+                        }
+                        else if (cSeason == "Winter"){
+                            index = 7;
+                        }
+                    }
+                    var row = 1;
+                    console.log("index: " + index);
+                    if (dupCourse2(courseCode) == false){
+                        while (inserted == false){
+                            if(row > 5){
+                                alert("Semester full cannot add: " + courseCode + " to year " + cYear + " and semester " + cSeason);
+                                inserted = true;
+                            }
+                            else if(document.getElementById(row).cells[index].value == 1){
+                                row++;
+                            }
+                            else{
+                                document.getElementById(row).cells[index].innerHTML = courseCode;
+                                document.getElementById(row).cells[index].value = 1;
+                                document.getElementById(row).cells[index].setAttribute("title", "SCI\n" + cName + "\n" + cSeason + " Semester and year " + cYear + " of study\nat " + cCampus + " campus");
+                                document.getElementById(row).cells[index].onmouseover = function(){this.style.backgroundColor = "pink";};
+                                document.getElementById(row).cells[index].onmouseout = function(){this.style.backgroundColor = "azure";};
+                                inserted = true;
+                            }
+                        }
+                    }
+                    //cName = data["Name"];
+					//cYear = data["Year"];
+					//cSeason = data["Season"];
+					//cCampus = data["Campus"];
+                    //cDist = data["Dist"];
+					//document.getElementById("12").innerHTML = "Year:" + data["Year"];
+					//document.getElementById("13").innerHTML = "Season:" + data["Season"];
+					//document.getElementById("14").innerHTML = "Campus:" + data["Campus"];
+                    //document.getElementById("15").innerHTML = "Dist:" + data["Dist"];
+                    //console.log(courseCode+" "+cName+" "+cYear+" "+cSeason+" "+cCampus+" "+cDist);
+					//document.getElementById("loginError").innerHTML = "<p>"+data["Name"]+"</p>";
+					
+				});  
+			});
+            //alert(courseCode+" "+cName+" "+cYear+" "+cSeason+" "+cCampus+" "+cDist); 
+	}
     
 }
 
-function dupCourse(courseList, course)
-{
-    var count=courseList.length;
-    for(var i=0;i<count;i++)
-    {
-        if(courseList[i]===course.substring(0,6)){
-            alert("Course: " + c.substring(0,6) + " already in year " + year + " and semester " + sem);
-            return true;
+function dupCourse2(courseCode) {
+    for (var i = 1; i < 6; i++){
+        for (var j = 0; j < 8; j++){
+            if(document.getElementById(""+i+j).innerHTML === courseCode){
+                alert("Course: " + courseCode + " already in the slot");
+                return true;
+            }
         }
     }
     return false;
