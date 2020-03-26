@@ -22,7 +22,8 @@ function addCourseToTable() {
 	var cYear = "";
 	var cSeason = "";
 	var cCampus = "";
-	var cDist = "";
+    var cDist = "";
+    var cDep = "";
 	var url = "http://localhost:8080/api/v1/searchCourseTree?course="+courseCode;
 	if (courseCode.length==0){
 		document.getElementById("courseError").innerHTML = "<p>Course blank/missing</p>";
@@ -48,6 +49,8 @@ function addCourseToTable() {
 				response.json().then(function(data) {  
                     //document.getElementById("11").innerHTML = courseCode;
                     //console.log(document.getElementById("11").innerHTML);
+//                    console.log("Data: " );
+                    console.log("Response: " + response.json());
                     cName = data["Name"];
                     //console.log("name: " + cName);
                     cYear = data["Year"];
@@ -55,8 +58,7 @@ function addCourseToTable() {
 					cSeason = data["Season"];
 					cCampus = data["Campus"];
                     cDist = data["Dist"];
-                    //cYear = "1"; // TESTING PURPOSES
-                    //cSeason = "Fall"; // TESTING PURPOSES
+//                    cDep = data["Dep"];
                     var inserted = false;
                     var index;
                     if (cYear == "1"){
@@ -92,8 +94,8 @@ function addCourseToTable() {
                         }
                     }
                     var row = 1;
-                    console.log("index: " + index);
-                    if (dupCourse2(courseCode) == false){
+                    //console.log("index: " + index);
+                    if (dupCourse2(courseCode) == false){ // ADDING TO TABLE
                         while (inserted == false){
                             if(row > 5){
                                 alert("Semester full cannot add: " + courseCode + " to year " + cYear + " and semester " + cSeason);
