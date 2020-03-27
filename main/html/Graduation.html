@@ -3,17 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<title>Graduation Planner</title>
+	<link rel="stylesheet" type="text/css" href="../css/graduation.css">
 	<script src="../js/table.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../js/go.js"></script>
 </head>
 <body>
 	<a href="Course Search.html"  style="float: right;">Back</a>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<p align = "center">Search Bar</p>
-    <button onclick="addCourse()">Add Course</button>
-
-		<div class="timetable">
-			<table id="tablee">
+	<div align="center">
+		<label for="code" >Course Code: </label>
+		<input type="text" id="code"/>
+		<input type="button" id="submit" value="Add" onclick="addCourseToTable()"/>
+	</div>	
+	<div class="timetable">
+			<table>
 				<tr>
 					<th class="year" id="year1" colspan="2">First Year</th>
 					<th class="year" id="year2" colspan="2">Second Year</th>
@@ -29,65 +33,62 @@
 					<td class="semesterWinter" id="winter3">Winter</td>
 					<td class="semesterFall" id="fall4">Fall</td>
 					<td class="semesterWinter" id="winter4">Winter</td>
-                </tr>
-                
-                <tr id="1">
-					
+				</tr>
+				<tr id="1">
+					<td class="course" id="10" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="11" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="12" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="13" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="14" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="15" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="16" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="17" onmousedown="removeCourse(id)"></td>
 				</tr>
 				<tr id="2">
-					
+					<td class="course" id="20" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="21" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="22" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="23" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="24" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="25" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="26" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="27" onmousedown="removeCourse(id)"></td>
 				</tr>
 				<tr id="3">
-					
+					<td class="course" id="30" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="31" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="32" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="33" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="34" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="35" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="36" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="37" onmousedown="removeCourse(id)"></td>
 				</tr>
 				<tr id="4">
-					
+					<td class="course" id="40" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="41" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="42" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="43" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="44" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="45" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="46" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="47" onmousedown="removeCourse(id)"></td>
 				</tr>
 				<tr id="5">
-					
-                </tr>
-                
-                <script>generateTable();</script>
+					<td class="course" id="50" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="51" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="52" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="53" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="54" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="55" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="56" onmousedown="removeCourse(id)"></td>
+					<td class="course" id="57" onmousedown="removeCourse(id)"></td>
+				</tr>
+
+				<script>generateTable2();</script>
 				
 			</table>
-		</div>
 	</div>
-	<style type="text/css">
-		
-		.timetable{
-			float:left;
-			width:764px;
-		}
-		.timetable table{
-			background:#FF6347;
-			width:200%;
-		}
-		
-		.timetable td{
-			background:#fafafa;
-			color:#444;
-			text-align:center;
-			padding:35px;
-		}
-		.timetable td.semesterFall{
-			background:#D2691E;
-			border: 1px solid #D2691E;
-		}
-		.timetable td.semesterWinter{
-			background:#E0FFFF;
-			border: 1px solid #E0FFFF;
-		}
-		.timetable td.course{
-			background:#F0FFFF;
-			border: 5px solid black;
-			width:100px;
-		}
-		.timetable td.over{
-			background:#FBEC88;
-		}
-		
-		
-	</style>
 	
 </body>
 </html>
