@@ -2,7 +2,7 @@
 
 ## Sprint Goal
 
-- [LIST USER STORIES WORKED ON]
+- Finish remaining work on the major release goals outlined in [RPM.md from Sprint 1](https://github.com/UTMCSC301/project-full-throttle-axolotl/blob/master/doc/sprint1/RPM.md)
 
 ## Difficulty Spikes
 
