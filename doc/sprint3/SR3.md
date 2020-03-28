@@ -33,7 +33,7 @@
 ## Practices to stop for next sprint
 - In the interest of our health, the in-person meetings will halt and be replaced with remote meetings
 
-## Best/Worst experience for Sprint 2
+## Best/Worst experience for Sprint 3
 
 ### *Aaron Strasser*
 **Best**: Starting to see the project’s parts come together to complete a finished product
