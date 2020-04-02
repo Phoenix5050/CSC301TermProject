@@ -14,15 +14,19 @@ function handleSearch(course){
 		}
 	}).then(  
         function(response) {  
-            if (response.status !== 200) {  
-                console.log("Error:"+response.status);  
+            if (response.status == 400) {  
+                console.log("Bad Request Error:"+response.status);  
                 return;  
-            }
+			}
+			else if(response.status == 404){
+				console.log('No such record for '+course);
+				return;
+			}
             
             // Examine the text in the response  
-            response.json().then(function(data) {  
-				courseResponse = data["SearchResponse"];
-				console.log(courseResponse);
+            response.json().then(function(json) {  
+				courseResponse = JSON.stringify(json);
+				console.log("json in searchbar.js is "+courseResponse);
 				document.cookie="courseResponse="+courseResponse;
 // 				if (courseResponse == "Course not found"){
 // 					//document.getElementById("searchError").innerHTML = "<p>Course does not exist</p>";
