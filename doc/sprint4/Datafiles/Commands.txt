@@ -29,11 +29,6 @@ Add enrolled_in:
 LOAD CSV FROM "file:///enrolled_in.csv" AS DATA
 CREATE (:enrolled_in {username:DATA[0],course:DATA[1],status:DATA[2],grade:DATA[3]})
 
-Add CORreq:
-
-LOAD CSV FROM "file:///corequisites.csv" AS DATA
-CREATE (:coReq {Code1:DATA[0],Code2:DATA[1]})
-
 Add Plans:
 
 LOAD CSV FROM "file:///Plans.csv" AS DATA
@@ -45,10 +40,6 @@ ______________________________________________________Add Relationship _________
 Add PreREq:
 
 MATCH (c:course),(p:preReq),(c1:course) WHERE (c.Code=p.Code1 AND c1.Code=p.Code2) CREATE (c1)-[:PreReq]->(c)
-
-Add CoReq:
-
-MATCH (c:course),(p:coReq),(c1:course) WHERE (c.Code=p.Code1 AND c1.Code=p.Code2) CREATE (c1)-[:coReq]->(c)
 
 Add Plan:
 
