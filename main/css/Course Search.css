@@ -26,25 +26,33 @@
       }
 
 table {
+  border-collapse: collapse;
+        table-layout: auto ;
         width: 100%;
-        table-layout: fixed ;
-
 }
 
-fall {
-    width: 100%
+
+.fall {
+    width: 100%;
+
+    display: inline-block;
 }
 
 td{
-    border: 1px solid black;    
     text-align: left;
     overflow: hidden;
     padding: 0; 
 
 }
-p,tr,td{
-        border: 1px solid black;    
 
+.tableHeaders,.lecture{
+  width:400px;
+  border: 1px solid black;    
+
+}
+.tableHeader,.lectures{
+  border-collapse: collapse;
+  border: 1px solid black;    
 }
 p{
     padding:0;

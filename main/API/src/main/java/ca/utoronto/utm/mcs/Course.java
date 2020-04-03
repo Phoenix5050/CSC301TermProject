@@ -62,6 +62,7 @@ public class Course implements HttpHandler{
 			// Any other info that might be needed can be added by adding c.[fieldname]
 			String courseQuery = String.format("MATCH (c:course) WHERE (c.Code = \"%s\") RETURN c.Name, c.Year, c.Season", courseCode);
 			String lectureQuery = String.format("MATCH (c:course),(l:lecture),( (c)-[:At]-(l) ) WHERE (c.Code=\"%s\" AND l.Code= \"%s\") RETURN l.Room, l.day, l.timeS, l.timeF, l.prof, l.section", courseCode, courseCode);
+
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
 			JSONObject searchResponse = new JSONObject();

@@ -9,35 +9,58 @@ window.addEventListener("load", function(){
 
     const coursesbody = document.createElement('tbody');
     coursesbody.className = "lectureTableBody";
-
+    
     searchForm.addEventListener("submit",function(e) {
     e.preventDefault(); // before the code
     /* do what you want with the form */
 
     // Should be triggered on form submit
-    const courseSearched = searchfield.value;
+    window.courseSearched = searchfield.value;
+    console.log("Course searched is "+courseSearched);
     clearPage(searchbarcontainer,courses,coursesbody);
-    if(courseSearched == courseCode){
+    handleSearch(courseSearched);
+    window.courseData = parseCookie("courseResponse");
+    //console.log("Data found: "+courseSearchResponse['Lectures']);
+    console.log(window.courseData);
+   
+    if(courseExists(window.courseData)){
+        var semester;
         insertLectureHeader(coursesbody);
-        const fallSemester=insertFallSemester(coursesbody);
-        const winterSemester=insertWinterSemester(coursesbody);
-        const semester = winterSemester;
-        insertCourseCode(courseCode,semester);
-        insertCourseDetails(prerequisites,corequisites,orderExclusions,semester);
-        insertLectureHeader(semester);
+
+        //var semester = function(){
+            if (window.courseData['Semester']=='Fall'){
+                semester = insertFallSemester(coursesbody);
+            }
+            else{
+                semester = insertWinterSemester(coursesbody);
+            }
+                //return insertFallSemester(coursesbody);
+           // return insertWinterSemester(coursesbody);
+        //}
+        //console.log(semester.children)
+        insertCourseCode(semester);
+        //insertCourseDetails(prerequisites,corequisites,orderExclusions,semester);
+       // insertLectureHeader(semester);
         insertTableHeaders(semester);
-        insertLecture(section,time,location,instructor,semester);
-        insertLecture(section,time,location,instructor,semester);
+        insertLectures(semester);
+        // insertLecture(section,time,location,instructor,semester);
+        // insertLecture(section,time,location,instructor,semester);
         //addToTableBody(coursesbody,semester);
         
     }
     else{
         (function(){
-            alert("COURSE "+courseSearched+" NOT FOUND");
+            if (window.courseData==null){
+                message="Cookie not found";
+            }
+            else{
+                message="COURSE "+courseSearched+" NOT FOUND";
+            }
+            alert(message);
             const errorMessage = coursesbody.insertRow(0);
             const errorMessageText = document.createElement("H6");
             errorMessageText.className = 'errormessage';
-            errorMessageText.innerText = "COURSE "+courseSearched+" NOT FOUND";
+            errorMessageText.innerText = message;
             errorMessage.appendChild(errorMessageText);
      })();
    }
@@ -88,12 +111,13 @@ window.addEventListener("load", function(){
     }
 //fallheader.setAttribute('border', '1');
     //If course is found
-     function insertCourseCode(courseCode,semester){
+     function insertCourseCode(semester){
         const coursecode = document.createElement('tr');
         const coursecodetext = document.createElement("H6");
         coursecodetext.className = "courseCode";
-        coursecodetext.innerHTML=courseCode;
+        coursecodetext.innerHTML=courseSearched;
         coursecode.appendChild(coursecodetext);
+        console.log(semester.children)
         addToSemester(semester,coursecode);
      }
 
@@ -101,7 +125,8 @@ window.addEventListener("load", function(){
          const coursedetails = document.createElement('tr');
          coursedetails.class,coursedetails.id = "courseRelations";
          const par = document.createElement('p');
-         par.innerText = `Prerequisites: ${prerequisites} \n\nCorequisites: ${corequisites} \n\nOrder Exclusions: ${orderExclusions}`
+         par.innerHTML = 'Prerequisites: \n\nCorequisites: \n\nOrder Exclusions: '
+         //par.innerText = `Prerequisites: ${prerequisites} \n\nCorequisites: ${corequisites} \n\nOrder Exclusions: ${orderExclusions}`
          coursedetails.appendChild(par);
          addToSemester(semester,coursedetails);
      }
@@ -117,6 +142,7 @@ window.addEventListener("load", function(){
 
      function insertTableHeaders(semester){
          const lecturedetailsheaders = document.createElement('tr');
+         lecturedetailsheaders.className='tableHeader'
          insertSectionHeader(lecturedetailsheaders);
          insertTimeHeader(lecturedetailsheaders);
          insertLocationHeader(lecturedetailsheaders);
@@ -163,7 +189,7 @@ window.addEventListener("load", function(){
 //lectureheader.appendChild(lecturedetailsheaders);
         function insertLecture(section,time,location,instructor,semester){
             const lecture = document.createElement('tr');
-            lecture.className = 'lecture';
+            lecture.className = 'lectures';
             
             insertSection(lecture,section);
             insertTime(lecture,time);
@@ -183,26 +209,26 @@ window.addEventListener("load", function(){
                 //lecturetimetext.innerText = "Monday:12:00PM-1:00PM\n\nWednesday:2:00PM-3:00PM\n\nFriday:11:00AM-12:00PM";
                 lecturetimetext.innerText = time;
                 const lecturetime = lecture.insertCell();
-                lecturetime.className = 'time';
+                lecturetime.className = 'lecture';
                 lecturetime.appendChild(lecturetimetext);
             };
             function insertLocation(lecture,location){
                 const lecturelocation = lecture.insertCell();
-                lecturelocation.className = 'location';
+                lecturelocation.className = 'lecture';
                 lecturelocation.appendChild(document.createTextNode(location));
             };
             function insertInstructor(lecture,instructor){
                 const lectureinstructor = lecture.insertCell();
-                lectureinstructor.className = 'instructor';
+                lectureinstructor.className = 'lecture';
                 lectureinstructor.appendChild(document.createTextNode(instructor));
             };
             function insertAddLectureButton(lecture){
                 const addlecture = lecture.insertCell();
-                addlecture.className = 'addLecture';
+                addlecture.className = 'lecture';
                 const addlecturebutton = document.createElement("button");
                 addlecturebutton.innerText = "Add Lecture";
                 addlecturebutton.addEventListener ("click", function() {
-                    alert("did something");
+                    alert("Course Added");
                 });
                 addlecture.appendChild(addlecturebutton);
                 
@@ -250,6 +276,49 @@ window.addEventListener("load", function(){
         addToTable(courses,coursesbody);
         addToContainer(container,courses);
     }
+    function courseExists(json){
+        if (json['SearchResponse'] == "Everything went fine") { return true; }
+        if (json['SearchResponse'] == "Course not found") {return false;}
+    }
+    function getSemester(){
+        console.log(window.courseData['Semester'].toLowerCase())
+        console.log("children: "+fall.children);
+        if(window.courseData['Semester'].toLowerCase()=='fall'){
+            return fall;
+        }
+        return fall;
+    }
+    function insertLectures(semester){
+        const lectures = window.courseData['Lectures'];
+        for (let i = 0; i<lectures.length; i++){
+            (function(){
+                const time = `${lectures[i]['Day']}:${lectures[i]['TimeS']}-${lectures[i]['TimeF']}`
+                const section = lectures[i]['Section'];
+                const instructor = lectures[i]['Prof'];
+                const room = lectures[i]['Room'];
+                insertLecture(section,time,room,instructor,semester);
+            }())
+        }
+        }
+    
+    function parseCookie(name){
+	//REFERENCED FROM: https://www.quirksmode.org/js/cookies.html
+	var nameEQ = name + "=";
+	var cookieInfo = document.cookie.split(';');
+	for(var i=0;i < cookieInfo.length;i++) {
+		var c = cookieInfo[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0){
+            var jsonCookie = c.substring(nameEQ.length,c.length);
+            var json = JSON.parse(jsonCookie);
+            console.log("Json in course search.js is "+json)
+            //var jsonStr = JSON.stringify(json, null, 2);
+            console.log(json['Lectures']);
+            return json;
+        }
+	}
+	return null;
+}
 });
 // coursesbody.appendChild(currentcoursesheader);
 // coursesbody.appendChild(fallheader);
