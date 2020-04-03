@@ -41,12 +41,16 @@ file = Mod.model.toJson();
 
 function save(){
  file = Mod.model.toJson(); 
- document.cookie = "treedata="+file;
+ document.cookie = "treedata="+JSON.stringify(file);
 }
 function load(){
 var get =parseCookie('treedata');
-//Mod.model = go.Model.fromJson(get); 
-Mod.model = go.Model.fromJson(file); 
+if (get == null){
+	Mod.model = go.Model.fromJson(file); 
+	
+}else {
+Mod.model = go.Model.fromJson(JSON.parse(get)); 
+}
 }
 
 
