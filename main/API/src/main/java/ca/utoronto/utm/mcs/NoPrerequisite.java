@@ -51,7 +51,7 @@ public class NoPrerequisite implements HttpHandler{
 			//String courseCode = queryParams.get("course");
 			//courseCode = courseCode.toUpperCase();
 			
-			String query = String.format("MATCH (c:Course) WHERE NOT ()-[:Prerequisite]->(c) RETURN c.Code, c.Name");
+			String query = String.format("MATCH (c:course) WHERE NOT ()-[:PreReq]->(c) RETURN c.Code, c.Name");
 			
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
@@ -75,8 +75,9 @@ public class NoPrerequisite implements HttpHandler{
 								
 								String courseName = record.get("c.Name").asString();
 								
-								
-								courses += "<li>" + courseCode + ": " + courseName + "</li>";
+								if (!courseCode.equals("null")) {
+									courses += "<li>" + courseCode + ": " + courseName + "</li>";
+								}
 								
 								
 								

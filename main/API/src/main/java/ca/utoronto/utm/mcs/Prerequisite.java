@@ -51,7 +51,7 @@ public class Prerequisite implements HttpHandler{
 			String courseCode = queryParams.get("course");
 			courseCode = courseCode.toUpperCase();
 			
-			String courseQuery = String.format("MATCH (c:Course) WHERE (c.Code = \"%s\") RETURN c.Code", courseCode);
+			String courseQuery = String.format("MATCH (c:course) WHERE (c.Code = \"%s\") RETURN c.Code", courseCode);
 			
 			
 			String transaction = session.writeTransaction(new TransactionWork<String>() {
@@ -76,7 +76,7 @@ public class Prerequisite implements HttpHandler{
 							System.out.println(courseCode);
 							
 							
-							String prerequisites = getPrerequisites(courseCode, "&nbsp&nbsp&nbsp&nbsp");
+							String prerequisites = getPrerequisites(courseCode, "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
 							
 							prerequisiteResponse.put("PrerequisiteResponse", "Prerequisites of " + courseCode + ":<br>" + prerequisites);
 						}
@@ -103,7 +103,7 @@ public class Prerequisite implements HttpHandler{
 	}
 	
 	private String getPrerequisites(String courseCode, String tabs) {
-		String courseQuery = String.format("MATCH (c:Course),(b:Course), a = ((b)-[Prerequisite]->(c)) WHERE c.Code = \"%s\" RETURN b.Code", courseCode);
+		String courseQuery = String.format("MATCH (c:course),(b:course), a = ((b)-[PreReq]->(c)) WHERE c.Code = \"%s\" RETURN b.Code", courseCode);
 		
 		
 		Session session = driver.session();
@@ -125,7 +125,7 @@ public class Prerequisite implements HttpHandler{
 							Record next = courseResult.next();
 							System.out.println(tabs + next.get("b.Code").asString() + "\n");
 							prerequisites += tabs + next.get("b.Code").asString() + "<br>";
-							prerequisites += tabs + getPrerequisites(next.get("b.Code").asString(), tabs + "&nbsp&nbsp&nbsp&nbsp");
+							prerequisites += getPrerequisites(next.get("b.Code").asString(), tabs + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
 							
 						}
 					}
