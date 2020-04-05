@@ -1,6 +1,6 @@
 project-full-throttle-axolotl
 
-Team FULL THROTTLE AXOLOTL's CSC301 final project.
+Team __FULL THROTTLE AXOLOTL__'s CSC301 final project: _Course Planner_.
 
 How to Run _Course Planner_:
 
