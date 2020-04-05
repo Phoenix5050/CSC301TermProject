@@ -40,7 +40,6 @@
 
 In an ideal scenario, our roles would align to what we described in our presentation and we would each focus on tasks and tools we were familiar with:
 
-----------------------------------------------------------------
 Name            | Role(s)
 ----------------|-----------------------------------------------
 Aaron Strasser  | Scrum Master; Backend Developer
@@ -50,7 +49,6 @@ Gordon Monk     | Project Manager; Documentation Facilitator
 Nabeel Rajabali | Full Stack Developer
 Rohan Patil     | Full Stack Developer; User information management
 Venura Perera   | Frontend Developer
-----------------------------------------------------------------
 
 The project began with each of us feeling unsure of exactly what kinds of contributions we’d be able to provide without a clear idea of the end product in mind, but once we got the ball rolling we could clearly identify what elements of the project fell within our respective skill sets and how we would define our roles.
 
