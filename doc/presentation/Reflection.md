@@ -27,7 +27,7 @@
 
 ### What didn’t
 
-- Codeshare.io ultimately didn’t get used
+- [Codeshare.io](https://codeshare.io/) ultimately didn’t get used
     - Was not necessary for code comparing across devs’ independent work
 - Trying to use Visual Studio Code instead of the recommended Eclipse IDE for Neo4j database operations
     - Proved to be more of a headache than it needed to be when there were existing instructions for how to do this in Eclipse
